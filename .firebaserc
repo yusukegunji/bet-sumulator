@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "bet-simulator-44c4b"
+  },
+  "targets": {
+    "bet-simulator-44c4b": {
+      "hosting": {
+        "bet-simulator": [
+          "bet-simulator-44c4b"
+        ]
+      }
+    }
+  }
+}

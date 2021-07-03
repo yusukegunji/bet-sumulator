@@ -1,0 +1,31 @@
+.heading {
+  margin-bottom: 24px;
+}
+
+.header {
+  background: #303030;
+  padding: 16px 24px;
+  color: #fafafa;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  margin-bottom: 16px;
+  &__item {
+    margin-right: 24px;
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  align-items: center;
+  padding: 0 16px;
+  &__index {
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.38);
+    display: grid;
+    place-items: center;
+    transform: translateY(-10px);
+  }
+}

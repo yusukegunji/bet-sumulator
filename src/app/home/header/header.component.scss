@@ -1,0 +1,17 @@
+.heading {
+  background: #2d4ebf;
+  color: #fafafa;
+  padding: 16px 24px;
+  &__text {
+    font-size: 16px;
+  }
+}
+
+.selectors-group {
+  display: flex;
+  align-items: center;
+}
+
+.selector {
+  margin-right: 16px;
+}

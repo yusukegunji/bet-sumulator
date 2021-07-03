@@ -1,0 +1,43 @@
+<ng-container *ngIf="type === 'yosoka'">
+  <mat-form-field appearance="outline">
+    <mat-label>予想家を選択</mat-label>
+    <mat-select [formControl]="yosokaControl">
+      <mat-option *ngFor="let yosoka of yosokas" [value]="yosoka.value">
+        {{ yosoka.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
+
+<ng-container *ngIf="type === 'kenshu'">
+  <mat-form-field appearance="outline">
+    <mat-label>馬券種を選択</mat-label>
+    <mat-select [formControl]="kenshuControl">
+      <mat-option *ngFor="let kenshu of kenshues" [value]="kenshu.value">
+        {{ kenshu.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
+
+<ng-container *ngIf="type === 'jra'">
+  <mat-form-field appearance="outline">
+    <mat-label>中央競馬場を選択</mat-label>
+    <mat-select [formControl]="jraControl">
+      <mat-option *ngFor="let jou of jra" [value]="jou.value">
+        {{ jou.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
+
+<ng-container *ngIf="type === 'nar'">
+  <mat-form-field appearance="outline">
+    <mat-label>地方競馬場を選択</mat-label>
+    <mat-select [formControl]="narControl">
+      <mat-option *ngFor="let jou of nar" [value]="jou.value">
+        {{ jou.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>

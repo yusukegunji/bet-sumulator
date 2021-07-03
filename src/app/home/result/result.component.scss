@@ -1,0 +1,20 @@
+.result-flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  &__heading {
+    margin-right: 16px;
+  }
+  &__result {
+    padding: 8px 16px;
+    border: 1px solid #fafafa;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-right: 24px;
+  }
+}

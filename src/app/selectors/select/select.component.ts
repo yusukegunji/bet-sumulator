@@ -1,6 +1,7 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-select',
@@ -17,7 +18,7 @@ export class SelectComponent implements OnInit {
     { value: 'rena', viewValue: 'RENA' },
   ];
 
-  kenshues = [
+  shikibetus = [
     { value: 'tansho', viewValue: '単勝' },
     { value: 'fukusho', viewValue: '複勝' },
     { value: 'wide', viewValue: 'ワイド' },
@@ -58,11 +59,16 @@ export class SelectComponent implements OnInit {
   ];
 
   yosokaControl = new FormControl('', Validators.required);
-  kenshuControl = new FormControl('');
+  shikibetuControl = new FormControl('');
   jraControl = new FormControl('');
   narControl = new FormControl('');
 
-  constructor() {}
+  constructor(private uiService: UiService) {}
 
   ngOnInit(): void {}
+
+  setShikibetu() {
+    this.uiService.shikibetu = this.shikibetuControl.value;
+    console.log(this.uiService.shikibetu);
+  }
 }

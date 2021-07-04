@@ -12,8 +12,11 @@
 <ng-container *ngIf="type === 'kenshu'">
   <mat-form-field appearance="outline">
     <mat-label>馬券種を選択</mat-label>
-    <mat-select [formControl]="kenshuControl">
-      <mat-option *ngFor="let kenshu of kenshues" [value]="kenshu.value">
+    <mat-select
+      [formControl]="shikibetuControl"
+      (selectionChange)="setShikibetu()"
+    >
+      <mat-option *ngFor="let kenshu of shikibetus" [value]="kenshu.value">
         {{ kenshu.viewValue }}
       </mat-option>
     </mat-select>

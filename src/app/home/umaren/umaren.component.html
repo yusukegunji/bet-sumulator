@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="container container--shikibetu">
+    <div class="heading">
+      <p class="heading__text">式別：馬連</p>
+    </div>
+
+    <div class="header">
+      <p class="header__item">馬番</p>
+      <p class="header__item">馬1</p>
+      <p class="header__item">馬2</p>
+    </div>
+
+    <form [formGroup]="betMoneyGroup">
+      <div *ngFor="let rank of ranks; index as i" class="row">
+        <p class="row__index">{{ rank.index }}</p>
+        <mat-checkbox class="checkbox"></mat-checkbox>
+        <mat-checkbox class="checkbox"></mat-checkbox>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,6 +1,18 @@
-<app-header></app-header>
+<div class="header">
+  <app-header></app-header>
+</div>
 
-<app-tansho></app-tansho>
+<div class="grid-wrapper">
+  <ng-container *ngIf="uiService.shikibetu === 'tansho'"
+    ><app-tansho></app-tansho
+  ></ng-container>
+  <ng-container *ngIf="uiService.shikibetu === 'fukusho'"
+    ><app-fukusho></app-fukusho
+  ></ng-container>
+  <ng-container *ngIf="uiService.shikibetu === 'umaren'"
+    ><app-umaren></app-umaren
+  ></ng-container>
+</div>
 
 <div class="footer">
   <app-result></app-result>

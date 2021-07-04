@@ -1,3 +1,18 @@
+.header {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: 400px 400px 1fr;
+  padding: 140px 0 80px;
+}
+
 .footer {
   width: 100vw;
   padding: 16px;

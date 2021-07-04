@@ -12,6 +12,7 @@ body {
     "ヒラギノ角ゴシック", YuGothic, "Yu Gothic", "メイリオ", Meiryo,
     "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   word-break: break-all;
+  font-size: 14px;
 }
 
 a {
@@ -54,8 +55,19 @@ img {
 
 .container {
   max-width: 1600px;
-  padding: 0 24px;
+  padding: 16px 24px;
   &--header {
     padding: 16px 24px;
+  }
+  &--shikibetu {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+      rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  }
+}
+
+.selectors-group,
+.row {
+  .mat-form-field-wrapper {
+    padding: 8px 0;
   }
 }

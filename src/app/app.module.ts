@@ -12,6 +12,7 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectorsModule } from './selectors/selectors.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { SelectorsModule } from './selectors/selectors.module';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     SelectorsModule,
+    MatButtonModule,
   ],
   providers: [{ provide: REGION, useValue: 'asia-northeast1' }],
   bootstrap: [AppComponent],

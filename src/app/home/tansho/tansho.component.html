@@ -1,27 +1,29 @@
 <div class="container">
-  <div class="heading">
-    <p class="heading__text">式別：単勝</p>
-  </div>
-
-  <div class="header">
-    <p class="header__item">馬番</p>
-    <p class="header__item">金額</p>
-  </div>
-
-  <form [formGroup]="betMoneyGroup">
-    <div *ngFor="let ban of umaban; index as i" class="row">
-      <p class="row__index">{{ i + 1 }}</p>
-      <mat-form-field appearance="outline">
-        <input
-          matInput
-          formControlName="bet"
-          type="number"
-          placeholder="0"
-          min="100"
-          max="10000"
-          step="100"
-        />
-      </mat-form-field>
+  <div class="container container--shikibetu">
+    <div class="heading">
+      <p class="heading__text">式別：単勝</p>
     </div>
-  </form>
+
+    <div class="header">
+      <p class="header__item">馬番</p>
+      <p class="header__item">金額</p>
+    </div>
+
+    <form [formGroup]="betMoneyGroup">
+      <div *ngFor="let ban of umaban; index as i" class="row">
+        <p class="row__index">{{ i + 1 }}</p>
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            formControlName="bet"
+            type="number"
+            placeholder="0"
+            min="100"
+            max="10000"
+            step="100"
+          />
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
 </div>

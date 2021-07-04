@@ -1,10 +1,10 @@
 .heading {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .header {
-  background: #303030;
-  padding: 16px 24px;
+  background: #424242;
+  padding: 8px 24px;
   color: #fafafa;
   display: grid;
   grid-template-columns: 80px 1fr;
@@ -22,10 +22,8 @@
   &__index {
     width: 32px;
     height: 32px;
-    padding: 8px;
     border: 1px solid rgba(0, 0, 0, 0.38);
     display: grid;
     place-items: center;
-    transform: translateY(-10px);
   }
 }

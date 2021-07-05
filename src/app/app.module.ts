@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectorsModule } from './selectors/selectors.module';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     SelectorsModule,
     MatButtonModule,
+    MatSnackBarModule,
   ],
   providers: [{ provide: REGION, useValue: 'asia-northeast1' }],
   bootstrap: [AppComponent],

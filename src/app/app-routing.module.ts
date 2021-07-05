@@ -4,14 +4,18 @@ import { HomeComponent } from './home/home/home.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'welcome',
     loadChildren: () =>
-    import('./home/home.module').then((m) => m.HomeModule),
-  }
+      import('./welcome/welcome.module').then((m) => m.WelcomeModule),
+  },
+  {
+    path: '',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

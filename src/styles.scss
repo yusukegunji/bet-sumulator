@@ -8,9 +8,9 @@ body {
 
 body {
   margin: 0;
-  font-family: "Avenir", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans",
-    "ヒラギノ角ゴシック", YuGothic, "Yu Gothic", "メイリオ", Meiryo,
-    "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans',
+    'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo,
+    'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   word-break: break-all;
   font-size: 14px;
 }
@@ -70,4 +70,9 @@ img {
   .mat-form-field-wrapper {
     padding: 8px 0;
   }
+}
+
+.custom-snackbar {
+  background: linear-gradient(to right, #396afc, #2948ff);
+  color: #fff;
 }

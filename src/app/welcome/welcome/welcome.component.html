@@ -1,0 +1,34 @@
+<div class="welcome-wrap">
+  <ng-container *ngIf="authService.isProcessing; else default">
+    <div class="loading">
+      <p class="loading__svg">
+        <img src="assets/images/loading.svg" alt="" />
+      </p>
+      <P class="loading__text">
+        <span>ロ</span>
+        <span>グ</span>
+        <span>イ</span>
+        <span>ン</span>
+        <span>中</span>
+      </P>
+    </div>
+  </ng-container>
+
+  <ng-template #default>
+    <div class="main">
+      <div class="main__block main__block--title">
+        <p class="main__title">🐴 Bet Simulator</p>
+      </div>
+
+      <div class="main__block">
+        <button
+          mat-stroked-button
+          class="main__login"
+          (click)="authService.googleLogin()"
+        >
+          ログイン
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -1,10 +1,17 @@
-.heading {
+.header {
   background: #2d4ebf;
   color: #fafafa;
   padding: 16px 24px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   &__text {
     font-size: 16px;
+  }
+  &__icon {
+    background: center center/cover no-repeat;
+    box-shadow: none;
   }
 }
 

@@ -15,6 +15,7 @@ import { UmarenComponent } from './umaren/umaren.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule,
+    MatMenuModule,
   ],
 })
 export class HomeModule {}

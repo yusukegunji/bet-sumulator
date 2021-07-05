@@ -10,14 +10,13 @@
       <p class="header__item">馬2</p>
     </div>
 
-    <!-- <form [formGroup]="formGroup">
+    <form [formGroup]="formGroup" *ngFor="let rank of ranks">
       <div
-        formArrayName="rankChecks"
-        *ngFor="let rank of ranks; index as i"
-        class="row"
+        formArrayName="checkForms"
+        *ngFor="let form of checkForms.controls; index as i"
       >
-        <div [formGroup]="rankChecks.controls[i]" class="ranks">
-          <p class="row__index">{{ rank.index }}</p>
+        <div [formGroupName]="i" class="ranks">
+          <p class="ranks__index">{{ rank.index }}</p>
           <mat-checkbox
             class="checkbox"
             formControlName="first"
@@ -30,6 +29,6 @@
           ></mat-checkbox>
         </div>
       </div>
-    </form> -->
+    </form>
   </div>
 </div>

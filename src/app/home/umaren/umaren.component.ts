@@ -17,12 +17,25 @@ import Ranks from '../../rank.json';
 export class UmarenComponent implements OnInit {
   ranks: Rank[] = Ranks;
 
-  get rankChecks() {
-    return this.formGroup.get('rankChecks') as FormArray;
+  // checksGroup: FormGroup = this.fb.group({
+  //   first: this.fb.array([]),
+  //   second: this.fb.array([]),
+  // });
+
+  // get first(): FormArray {
+  //   return this.checksGroup.get('first') as FormArray;
+  // }
+
+  // get second(): FormArray {
+  //   return this.checksGroup.get('second') as FormArray;
+  // }
+
+  get checkForms() {
+    return this.formGroup.get('checkForms') as FormArray;
   }
 
   formGroup = new FormGroup({
-    rankChecks: new FormArray([
+    checkForms: new FormArray([
       new FormGroup({
         first: new FormControl(false),
         second: new FormControl(false),

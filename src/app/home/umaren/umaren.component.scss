@@ -7,14 +7,14 @@
   padding: 8px 24px;
   color: #fafafa;
   display: grid;
-  grid-template-columns: 80px 80px 80px 1fr;
+  grid-template-columns: 80px 80px 80px;
   justify-items: center;
   margin-bottom: 16px;
 }
 
-.row {
+.ranks {
   display: grid;
-  grid-template-columns: 80px 80px 80px 1fr;
+  grid-template-columns: 80px 80px 80px;
   place-items: center;
   padding: 0 16px;
   margin-bottom: 8px;

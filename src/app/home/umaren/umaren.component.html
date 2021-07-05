@@ -10,12 +10,26 @@
       <p class="header__item">馬2</p>
     </div>
 
-    <form [formGroup]="betMoneyGroup">
-      <div *ngFor="let rank of ranks; index as i" class="row">
-        <p class="row__index">{{ rank.index }}</p>
-        <mat-checkbox class="checkbox"></mat-checkbox>
-        <mat-checkbox class="checkbox"></mat-checkbox>
+    <!-- <form [formGroup]="formGroup">
+      <div
+        formArrayName="rankChecks"
+        *ngFor="let rank of ranks; index as i"
+        class="row"
+      >
+        <div [formGroup]="rankChecks.controls[i]" class="ranks">
+          <p class="row__index">{{ rank.index }}</p>
+          <mat-checkbox
+            class="checkbox"
+            formControlName="first"
+            (change)="check()"
+          ></mat-checkbox>
+          <mat-checkbox
+            class="checkbox"
+            formControlName="second"
+            (change)="check()"
+          ></mat-checkbox>
+        </div>
       </div>
-    </form>
+    </form> -->
   </div>
 </div>

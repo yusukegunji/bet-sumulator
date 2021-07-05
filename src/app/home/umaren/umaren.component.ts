@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormArrayName,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 import { Rank } from 'src/app/interfaces/rank';
 import Ranks from '../../rank.json';
 
@@ -10,13 +16,23 @@ import Ranks from '../../rank.json';
 })
 export class UmarenComponent implements OnInit {
   ranks: Rank[] = Ranks;
-  betMoneyGroup: FormGroup = new FormGroup({
-    bet: new FormControl(''),
+
+  get rankChecks() {
+    return this.formGroup.get('rankChecks') as FormArray;
+  }
+
+  formGroup = new FormGroup({
+    rankChecks: new FormArray([
+      new FormGroup({
+        first: new FormControl(false),
+        second: new FormControl(false),
+      }),
+    ]),
   });
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {
-    console.log(Ranks);
-  }
+  ngOnInit(): void {}
+
+  check() {}
 }

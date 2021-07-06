@@ -1,6 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UiService } from 'src/app/services/ui.service';
 
 @Component({
@@ -59,16 +59,29 @@ export class SelectComponent implements OnInit {
   ];
 
   yosokaControl = new FormControl('', Validators.required);
-  shikibetuControl = new FormControl('');
   jraControl = new FormControl('');
   narControl = new FormControl('');
 
-  constructor(private uiService: UiService) {}
+  shikibetuControls = this.fb.array([])
+  shikibetuControl: FormControl;
 
-  ngOnInit(): void {}
+  constructor(private uiService: UiService, private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.shikibetuControls.push(new FormControl(''))
+    console.log(this.shikibetuControls.controls[0]);
+    console.log(this.shikibetuControl);
+    
+    
+  }
 
   setShikibetu() {
     this.uiService.shikibetu = this.shikibetuControl.value;
     console.log(this.uiService.shikibetu);
+  }
+
+  addShikibetuControl(): void {
+    this.shikibetuControl = this.fb.control('');
+    this.shikibetuControls.push(this.shikibetuControl);
   }
 }

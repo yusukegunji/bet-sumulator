@@ -9,19 +9,24 @@
   </mat-form-field>
 </ng-container>
 
-<ng-container *ngIf="type === 'kenshu'">
+<div *ngIf="type === 'kenshu'" class="flex">
   <mat-form-field appearance="outline">
     <mat-label>馬券種を選択</mat-label>
+    <div *ngFor="let control of shikibetuControls.controls; index as i">
     <mat-select
-      [formControl]="shikibetuControl"
+    [formControl]="shikibetuControls.controls[i]"
       (selectionChange)="setShikibetu()"
     >
       <mat-option *ngFor="let kenshu of shikibetus" [value]="kenshu.value">
         {{ kenshu.viewValue }}
       </mat-option>
     </mat-select>
+  </div>
   </mat-form-field>
-</ng-container>
+  <div class="flex__item">
+  <button mat-mini-fab color="primary" (click)="addShikibetuControl()"><mat-icon>add</mat-icon></button>
+  </div>
+</div>
 
 <ng-container *ngIf="type === 'jra'">
   <mat-form-field appearance="outline">

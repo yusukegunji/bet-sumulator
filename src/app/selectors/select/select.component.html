@@ -10,22 +10,38 @@
 </ng-container>
 
 <div *ngIf="type === 'kenshu'" class="flex">
-  <mat-form-field appearance="outline">
-    <mat-label>馬券種を選択</mat-label>
-    <div *ngFor="let control of shikibetuControls.controls; index as i">
-    <mat-select
-    [formControl]="shikibetuControls.controls[i]"
-      (selectionChange)="setShikibetu()"
+  <form [formGroup]="formGroup" class="flex">
+    <div
+      formArrayName="shikibetuControls"
+      *ngFor="let control of shikibetuControls.controls; index as i"
+      class="flex__item"
     >
-      <mat-option *ngFor="let kenshu of shikibetus" [value]="kenshu.value">
-        {{ kenshu.viewValue }}
-      </mat-option>
-    </mat-select>
-  </div>
-  </mat-form-field>
-  <div class="flex__item">
-  <button mat-mini-fab color="primary" (click)="addShikibetuControl()"><mat-icon>add</mat-icon></button>
-  </div>
+      <div [formGroupName]="i">
+        <mat-form-field appearance="outline">
+          <mat-label>馬券種を選択</mat-label>
+          <mat-select
+            formControlName="shikibetuControl"
+            (selectionChange)="setShikibetu()"
+          >
+            <mat-option
+              *ngFor="let kenshu of shikibetus"
+              [value]="kenshu.value"
+            >
+              {{ kenshu.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <button
+    mat-mini-fab
+    color="primary"
+    class="flex__item"
+    (click)="addShikibetuControl()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
 
 <ng-container *ngIf="type === 'jra'">

@@ -1,6 +1,12 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { UiService } from 'src/app/services/ui.service';
 
 @Component({
@@ -62,26 +68,40 @@ export class SelectComponent implements OnInit {
   jraControl = new FormControl('');
   narControl = new FormControl('');
 
-  shikibetuControls = this.fb.array([])
-  shikibetuControl: FormControl;
+  formGroup: FormGroup;
+
+  get shikibetuControl(): FormGroup {
+    return this.fb.group({
+      shikibetuControl: [''],
+    });
+  }
+
+  get shikibetuControls(): FormArray {
+    return this.formGroup.get('shikibetuControls') as FormArray;
+  }
 
   constructor(private uiService: UiService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.shikibetuControls.push(new FormControl(''))
-    console.log(this.shikibetuControls.controls[0]);
-    console.log(this.shikibetuControl);
-    
-    
+    this.formGroup = this.createForm();
+  }
+
+  createForm(): FormGroup {
+    return this.fb.group({
+      shikibetuControls: this.fb.array([this.shikibetuControl]),
+    });
   }
 
   setShikibetu() {
-    this.uiService.shikibetu = this.shikibetuControl.value;
+    this.uiService.shikibetu = this.shikibetuControls.value;
     console.log(this.uiService.shikibetu);
   }
 
   addShikibetuControl(): void {
-    this.shikibetuControl = this.fb.control('');
     this.shikibetuControls.push(this.shikibetuControl);
+  }
+
+  removeShikibetuControl(i: number) {
+    this.shikibetuControls.removeAt(i);
   }
 }

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class UiService {
   shikibetu: string = 'umaren';
+  shikibetuGroup: string[] = [];
 
   constructor() {}
 }

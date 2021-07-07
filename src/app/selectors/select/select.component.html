@@ -21,7 +21,7 @@
           <mat-label>馬券種を選択</mat-label>
           <mat-select
             formControlName="shikibetuControl"
-            (selectionChange)="setShikibetu()"
+            (selectionChange)="setShikibetu(i)"
           >
             <mat-option
               *ngFor="let kenshu of shikibetus"

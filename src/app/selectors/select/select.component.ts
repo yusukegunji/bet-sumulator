@@ -92,9 +92,12 @@ export class SelectComponent implements OnInit {
     });
   }
 
-  setShikibetu() {
-    this.uiService.shikibetu = this.shikibetuControls.value;
+  setShikibetu(i: number) {
+    this.uiService.shikibetu =
+      this.shikibetuControls.controls[i].value.shikibetuControl;
     console.log(this.uiService.shikibetu);
+    console.log(this.shikibetuControls.controls[i].valueChanges);
+    console.log(this.shikibetuControls.controls[i]);
   }
 
   addShikibetuControl(): void {

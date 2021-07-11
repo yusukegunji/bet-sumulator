@@ -16,22 +16,24 @@ import Ranks from '../../rank.json';
 })
 export class UmarenComponent implements OnInit {
   ranks: Rank[] = Ranks;
+  firstChoice: number[] = [];
+  secondChoice: number[] = [];
 
   // checksGroup: FormGroup = this.fb.group({
   //   first: this.fb.array([]),
   //   second: this.fb.array([]),
   // });
 
-  // get first(): FormArray {
-  //   return this.checksGroup.get('first') as FormArray;
-  // }
-
-  // get second(): FormArray {
-  //   return this.checksGroup.get('second') as FormArray;
-  // }
-
   get checkForms() {
     return this.formGroup.get('checkForms') as FormArray;
+  }
+
+  get first(): FormArray {
+    return this.checkForms.get('first') as FormArray;
+  }
+
+  get second(): FormArray {
+    return this.checkForms.get('second') as FormArray;
   }
 
   formGroup = new FormGroup({
@@ -47,5 +49,15 @@ export class UmarenComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  check() {}
+  checkFirst(ranki: number) {
+    console.log(ranki);
+    this.firstChoice.push(ranki);
+    console.log('1頭目', this.firstChoice);
+  }
+
+  checkSecond(ranki: number) {
+    console.log(ranki);
+    this.secondChoice.push(ranki);
+    console.log('2頭目', this.secondChoice);
+  }
 }

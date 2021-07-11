@@ -1,5 +1,5 @@
 .header {
-  background: #2d4ebf;
+  background: linear-gradient(to right bottom, #396afc, #2948ff);
   color: #fafafa;
   padding: 8px 24px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
@@ -21,6 +21,7 @@
   align-items: center;
   background: #fff;
   padding: 0 24px;
+  overflow-x: auto;
 }
 
 .selector {

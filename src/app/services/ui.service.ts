@@ -4,8 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UiService {
-  shikibetu: string = 'umaren';
+  shikibetu: string;
   shikibetuGroup: string[] = [];
+  isOpen: boolean;
 
   constructor() {}
 }

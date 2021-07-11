@@ -80,7 +80,7 @@ export class SelectComponent implements OnInit {
     return this.formGroup.get('shikibetuControls') as FormArray;
   }
 
-  constructor(private uiService: UiService, private fb: FormBuilder) {}
+  constructor(public uiService: UiService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.formGroup = this.createForm();
@@ -93,11 +93,12 @@ export class SelectComponent implements OnInit {
   }
 
   setShikibetu(i: number) {
-    this.uiService.shikibetu =
-      this.shikibetuControls.controls[i].value.shikibetuControl;
-    console.log(this.uiService.shikibetu);
-    console.log(this.shikibetuControls.controls[i].valueChanges);
-    console.log(this.shikibetuControls.controls[i]);
+    const val = this.shikibetuControls.controls[i].value.shikibetuControl;
+    this.uiService.shikibetuGroup[i] = val;
+
+    if (val === 'umaren') {
+      this.uiService.isOpen = true;
+    }
   }
 
   addShikibetuControl(): void {

@@ -1,4 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+$primary: mat-palette($mat-blue, A700);
+$accent: mat-palette($mat-green, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$myTheme: mat-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+  )
+);
+
+@include angular-material-theme($myTheme);
 
 html,
 body {
@@ -60,19 +77,33 @@ img {
     padding: 16px 24px;
   }
   &--shikibetu {
+    max-width: 400px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
       rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   }
 }
 
-.selectors-group,
-.row {
+.selectors-group {
   .mat-form-field-wrapper {
     padding: 8px 0;
+  }
+}
+
+.row {
+  .mat-form-field-wrapper {
+    padding: 0;
+  }
+  .mat-form-field-outline-start,
+  .mat-form-field-outline-end {
+    border-radius: 0 !important;
   }
 }
 
 .custom-snackbar {
   background: linear-gradient(to right, #396afc, #2948ff);
   color: #fff;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0 !important;
 }

@@ -16,7 +16,7 @@
       *ngFor="let control of shikibetuControls.controls; index as i"
       class="flex__item"
     >
-      <div [formGroupName]="i">
+      <div [formGroupName]="i" class="flex">
         <mat-form-field appearance="outline">
           <mat-label>馬券種を選択</mat-label>
           <mat-select
@@ -31,6 +31,16 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <ng-container *ngIf="shikibetuControls.controls.length >= 2">
+        <button
+          mat-mini-fab
+          color="primary"
+          class="flex__item"
+          (click)="removeShikibetuControl(i)"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+      </ng-container>
       </div>
     </div>
   </form>

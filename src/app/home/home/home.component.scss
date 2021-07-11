@@ -8,15 +8,17 @@
 }
 
 .grid-wrapper {
+  width: 100vw;
   display: grid;
-  grid-template-columns: 400px 400px 1fr;
-  padding: 140px 0 80px;
+  grid-template-columns: repeat(5, max(300px));
+  padding: 124px 0 80px;
+  background: #fff;
 }
 
 .footer {
   width: 100vw;
   padding: 16px;
-  background: rgba(#000, 0.8);
+  background: rgba(#000, 0.72);
   color: #fafafa;
   position: fixed;
   bottom: 0;

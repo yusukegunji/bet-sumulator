@@ -17,10 +17,6 @@ export class TanshoComponent implements OnInit {
     return this.betMoneyGroup.get('betForms') as FormArray;
   }
 
-  // get betForm(): FormControl {
-  //   return this.betForms.get('betForm') as FormControl;
-  // }
-
   constructor(private betService: BetService, private fb: FormBuilder) {}
 
   buildBetForms() {
@@ -38,28 +34,19 @@ export class TanshoComponent implements OnInit {
       betForms: this.fb.array([]),
     });
 
-    this.addBetforms();
-    this.betMoneyGroup.valueChanges.subscribe((val) => {
-      console.log(val);
+    this.ranks.forEach(() => {
+      this.addBetforms();
     });
-    // this.betMoneyGroup.valueChanges.subscribe((val) => {
-    //   let sum = 0;
-    //   for (let key in val.betForms) {
-    //     if (val.hasOwnProperty(key)) {
-    //       sum = val[key] + sum;
-    //     }
-    //     console.log(sum);
-    //     this.betService.totalBet = sum;
-    //   }
-    // });
-  }
 
-  betMoney(): void {
-    // this.betService.betStockArr.push(this.betMoneyGroup.controls.bet.value);
-    // let lastValue =
-    //   this.betService.betStockArr[this.betService.betStockArr.length - 1];
-    // this.betService.totalBet = this.betService.betStockArr.reduce(
-    //   (a, b) => a + b
-    // );
+    this.betMoneyGroup.valueChanges.subscribe((val) => {
+      let sum = 0;
+      for (let key in val.betForms) {
+        if (val.betForms[key].hasOwnProperty('betForm')) {
+          sum = val.betForms[key].betForm + sum;
+        }
+        console.log(sum);
+        this.betService.totalBet = sum;
+      }
+    });
   }
 }

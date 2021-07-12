@@ -2,7 +2,7 @@
 @import '~@angular/material/theming';
 
 $primary: mat-palette($mat-blue, A700);
-$accent: mat-palette($mat-green, A200, A100, A400);
+$accent: mat-palette($mat-pink, A200, A100, A400);
 $warn: mat-palette($mat-red);
 
 $myTheme: mat-light-theme(
@@ -80,6 +80,7 @@ img {
     max-width: 400px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
       rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    background: linear-gradient(to right, #396afc, #2948ff);
   }
 }
 

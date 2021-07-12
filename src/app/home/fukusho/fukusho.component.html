@@ -8,17 +8,22 @@
 </div>
 
 <form [formGroup]="betMoneyGroup">
-  <div *ngFor="let ban of umaban; index as i" class="row">
-    <p class="row__index">{{ i + 1 }}</p>
-    <mat-form-field appearance="outline">
-      <input
-        matInput
-        formControlName="bet"
-        type="number"
-        min="100"
-        max="10000"
-        step="100"
-      />
-    </mat-form-field>
+  <div
+    formArrayName="betForms"
+    *ngFor="let form of betForms.controls; index as i"
+  >
+    <div [formGroupName]="i" class="row">
+      <p class="row__index">{{ i + 1 }}</p>
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          formControlName="betForm"
+          type="number"
+          min="100"
+          max="10000"
+          step="100"
+        />
+      </mat-form-field>
+    </div>
   </div>
 </form>

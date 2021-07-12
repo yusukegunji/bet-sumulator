@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Rank } from 'src/app/interfaces/rank';
+import { BetService } from 'src/app/services/bet.service';
+import Ranks from '../../rank.json';
 
 @Component({
   selector: 'app-fukusho',
@@ -7,12 +10,43 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./fukusho.component.scss'],
 })
 export class FukushoComponent implements OnInit {
-  umaban = new Array(18).fill(1, 1, 18);
-  betMoneyGroup: FormGroup = new FormGroup({
-    bet: new FormControl(''),
-  });
+  ranks: Rank[] = Ranks;
+  betMoneyGroup: FormGroup;
 
-  constructor() {}
+  get betForms(): FormArray {
+    return this.betMoneyGroup.get('betForms') as FormArray;
+  }
 
-  ngOnInit(): void {}
+  constructor(private betService: BetService, private fb: FormBuilder) {}
+
+  buildBetForms() {
+    return this.fb.group({
+      betForm: [''],
+    });
+  }
+
+  addBetforms() {
+    this.betForms.push(this.buildBetForms());
+  }
+
+  ngOnInit(): void {
+    this.betMoneyGroup = this.fb.group({
+      betForms: this.fb.array([]),
+    });
+
+    this.ranks.forEach(() => {
+      this.addBetforms();
+    });
+
+    this.betMoneyGroup.valueChanges.subscribe((val) => {
+      let sum = 0;
+      for (let key in val.betForms) {
+        if (val.betForms[key].hasOwnProperty('betForm')) {
+          sum = val.betForms[key].betForm + sum;
+        }
+        console.log(sum);
+        this.betService.totalBet = sum;
+      }
+    });
+  }
 }

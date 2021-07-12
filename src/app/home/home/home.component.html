@@ -2,7 +2,7 @@
   <app-header></app-header>
 </div>
 
-<mat-drawer-container>
+<mat-drawer-container class="drawer-container" autosize>
   <div class="grid-wrapper">
     <ng-container *ngFor="let shikibetu of uiService.shikibetuGroup">
       <ng-container *ngIf="shikibetu === 'tansho'"
@@ -11,16 +11,15 @@
       <ng-container *ngIf="shikibetu === 'fukusho'"
         ><app-fukusho></app-fukusho
       ></ng-container>
-      <ng-container *ngIf="shikibetu === 'umaren'"
-        ><app-umaren></app-umaren
-      ></ng-container>
+      <ng-container *ngIf="shikibetu === 'umaren'"></ng-container>
     </ng-container>
 
     <mat-drawer
       #drawer
       position="end"
-      [mode]="'over'"
+      [mode]="'side'"
       [opened]="uiService.isOpen"
+      [autoFocus]="false"
       ><app-umaren></app-umaren>
     </mat-drawer>
   </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 import { UiService } from 'src/app/services/ui.service';
 
 @Component({

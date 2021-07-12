@@ -84,8 +84,6 @@ export class SelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.createForm();
-    console.log(this.shikibetuControls.controls.length);
-    
   }
 
   createForm(): FormGroup {

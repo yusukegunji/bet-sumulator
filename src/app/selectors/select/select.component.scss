@@ -1,7 +1,11 @@
 .flex {
   display: flex;
   align-items: center;
-  &__item {
+  &__add {
+    margin-right: 8px;
+  }
+  &__remove {
+    margin-left: 8px;
     margin-right: 8px;
   }
 }

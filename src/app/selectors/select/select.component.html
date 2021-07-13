@@ -32,22 +32,22 @@
           </mat-select>
         </mat-form-field>
         <ng-container *ngIf="shikibetuControls.controls.length >= 2">
-        <button
-          mat-mini-fab
-          color="primary"
-          class="flex__item"
-          (click)="removeShikibetuControl(i)"
-        >
-          <mat-icon>remove</mat-icon>
-        </button>
-      </ng-container>
+          <button
+            mat-mini-fab
+            color="primary"
+            class="flex__remove"
+            (click)="removeShikibetuControl(i)"
+          >
+            <mat-icon>remove</mat-icon>
+          </button>
+        </ng-container>
       </div>
     </div>
   </form>
   <button
     mat-mini-fab
     color="primary"
-    class="flex__item"
+    class="flex__add"
     (click)="addShikibetuControl()"
   >
     <mat-icon>add</mat-icon>

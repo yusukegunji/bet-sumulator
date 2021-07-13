@@ -103,8 +103,6 @@ export class SelectComponent implements OnInit {
 
   addShikibetuControl(): void {
     this.shikibetuControls.push(this.shikibetuControl);
-    console.log(this.shikibetuControls.controls.length);
-
   }
 
   removeShikibetuControl(i: number) {

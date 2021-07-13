@@ -1,34 +1,40 @@
-<div class="container">
-  <div class="container container--shikibetu">
+<div class="container--shikibetu">
+  <div class="btn-wrap">
+    <button class="btn" (click)="uiService.isOpen = false">
+      <mat-icon class="btn__icon">clear</mat-icon>
+    </button>
+  </div>
+
+  <div class="header-wrap">
     <div class="heading">
       <p class="heading__text">式別：馬連</p>
     </div>
-
-    <div class="header">
-      <p class="header__item">馬番</p>
-      <p class="header__item">馬1</p>
-      <p class="header__item">馬2</p>
-    </div>
-
-    <form [formGroup]="formGroup" *ngFor="let rank of ranks">
-      <div
-        formArrayName="checkForms"
-        *ngFor="let form of checkForms.controls; index as i"
-      >
-        <div [formGroupName]="i" class="ranks">
-          <p class="ranks__index">{{ rank.index }}</p>
-          <mat-checkbox
-            class="checkbox"
-            formControlName="first"
-            (change)="checkFirst(rank.index)"
-          ></mat-checkbox>
-          <mat-checkbox
-            class="checkbox"
-            formControlName="second"
-            (change)="checkSecond(rank.index)"
-          ></mat-checkbox>
-        </div>
-      </div>
-    </form>
   </div>
+
+  <div class="header">
+    <p class="header__item">馬番</p>
+    <p class="header__item">馬1</p>
+    <p class="header__item">馬2</p>
+  </div>
+
+  <form [formGroup]="formGroup" *ngFor="let rank of ranks">
+    <div
+      formArrayName="checkForms"
+      *ngFor="let form of checkForms.controls; index as i"
+    >
+      <div [formGroupName]="i" class="ranks">
+        <p class="ranks__index">{{ rank.index }}</p>
+        <mat-checkbox
+          class="checkbox"
+          formControlName="first"
+          (change)="checkFirst(rank.index)"
+        ></mat-checkbox>
+        <mat-checkbox
+          class="checkbox"
+          formControlName="second"
+          (change)="checkSecond(rank.index)"
+        ></mat-checkbox>
+      </div>
+    </div>
+  </form>
 </div>

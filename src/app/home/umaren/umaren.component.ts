@@ -7,6 +7,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { Rank } from 'src/app/interfaces/rank';
+import { UiService } from 'src/app/services/ui.service';
 import Ranks from '../../rank.json';
 
 @Component({
@@ -45,7 +46,7 @@ export class UmarenComponent implements OnInit {
     ]),
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, public uiService: UiService) {}
 
   ngOnInit(): void {}
 

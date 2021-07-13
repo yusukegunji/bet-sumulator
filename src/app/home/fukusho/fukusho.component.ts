@@ -39,13 +39,17 @@ export class FukushoComponent implements OnInit {
     });
 
     this.betMoneyGroup.valueChanges.subscribe((val) => {
-      let sum = 0;
+      let sum: number = 0;
       for (let key in val.betForms) {
-        if (val.betForms[key].hasOwnProperty('betForm')) {
+        if (val.betForms[key].betForm > 0) {
           sum = val.betForms[key].betForm + sum;
+          this.betService.betStockArr[1] = sum;
+          this.betService.totalBet = this.betService.betStockArr.reduce(
+            (a: number, b: number) => {
+              return a + b;
+            }
+          );
         }
-        console.log(sum);
-        this.betService.totalBet = sum;
       }
     });
   }

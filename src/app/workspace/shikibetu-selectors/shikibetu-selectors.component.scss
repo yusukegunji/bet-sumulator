@@ -1,0 +1,20 @@
+.selectors-group {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  padding: 0 24px;
+  overflow-x: auto;
+  position: fixed;
+  top: 56px;
+  z-index: 10;
+  &--bg {
+    background: rgba(#fff, 0.38);
+    border-radius: 5px;
+  }
+}
+
+.selector {
+  margin-right: 16px;
+}

@@ -17,22 +17,22 @@
     <p class="header__item">馬2</p>
   </div>
 
-  <form [formGroup]="formGroup" *ngFor="let rank of ranks">
+  <form [formGroup]="formGroup">
     <div
       formArrayName="checkForms"
       *ngFor="let form of checkForms.controls; index as i"
     >
       <div [formGroupName]="i" class="ranks">
-        <p class="ranks__index">{{ rank.index }}</p>
+        <p class="ranks__index">{{ i + 1 }}</p>
         <mat-checkbox
           class="checkbox"
           formControlName="first"
-          (change)="checkFirst(rank.index)"
+          (change)="checkFirst($event, i + 1)"
         ></mat-checkbox>
         <mat-checkbox
           class="checkbox"
           formControlName="second"
-          (change)="checkSecond(rank.index)"
+          (change)="checkSecond($event, i + 1)"
         ></mat-checkbox>
       </div>
     </div>

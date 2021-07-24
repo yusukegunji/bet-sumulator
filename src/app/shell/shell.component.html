@@ -1,0 +1,19 @@
+<mat-sidenav-container autosize>
+  <mat-sidenav
+    mode="over"
+    fixedInViewport
+    class="sidenav"
+    [opened]="uiService.isSidenavOpen"
+  >
+    <div class="main-nav">
+      <app-side-nav *ngIf="uiService.isSidenavOpen"></app-side-nav>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="header">
+      <app-header></app-header>
+    </div>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

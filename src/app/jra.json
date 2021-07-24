@@ -1,0 +1,12 @@
+[
+  { "value": "01", "viewValue": "札幌" },
+  { "value": "02", "viewValue": "函館" },
+  { "value": "03", "viewValue": "福島" },
+  { "value": "04", "viewValue": "新潟" },
+  { "value": "05", "viewValue": "東京" },
+  { "value": "06", "viewValue": "中山" },
+  { "value": "07", "viewValue": "中京" },
+  { "value": "08", "viewValue": "京都" },
+  { "value": "09", "viewValue": "阪神" },
+  { "value": "10", "viewValue": "小倉" }
+]

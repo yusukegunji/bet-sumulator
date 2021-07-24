@@ -1,0 +1,9 @@
+[
+  { "value": "tansho", "viewValue": "単勝" },
+  { "value": "fukusho", "viewValue": "複勝" },
+  { "value": "wide", "viewValue": "ワイド" },
+  { "value": "umaren", "viewValue": "馬連" },
+  { "value": "umatan", "viewValue": "馬単" },
+  { "value": "sanpuku", "viewValue": "3連複" },
+  { "value": "santan", "viewValue": "3連単" }
+]

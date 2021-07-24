@@ -1,8 +1,11 @@
 <div class="header">
-  <button mat-icon-button (click)="toggleNav()">
-    <mat-icon class="header__menu-icon">menu</mat-icon>
+  <button mat-icon-button (click)="toggleNav()" class="header__menu-icon">
+    <mat-icon>menu</mat-icon>
   </button>
-  <h1 class="header__text" routerLink="/welcome">馬券シュミレーター</h1>
+  <p class="header__text" routerLink="/welcome">
+    <span class="header__logo">🐴</span>
+    馬券シュミレーター
+  </p>
 
   <span class="spacer"></span>
 

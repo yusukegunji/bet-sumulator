@@ -8,14 +8,13 @@ import { UiService } from '../services/ui.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public authService: AuthService, private uiServide: UiService) {}
+  constructor(public authService: AuthService, private uiService: UiService) {}
 
   ngOnInit(): void {}
 
   addShikibetuControl() {}
 
   toggleNav(): void {
-    this.uiServide.isSidenavOpen = !this.uiServide.isSidenavOpen;
-    console.log(this.uiServide.isSidenavOpen);
+    this.uiService.isSidenavOpen = !this.uiService.isSidenavOpen;
   }
 }

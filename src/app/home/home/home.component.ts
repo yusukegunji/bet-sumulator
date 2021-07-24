@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CheckService } from 'src/app/services/check.service';
 import { UiService } from 'src/app/services/ui.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { UiService } from 'src/app/services/ui.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(public uiService: UiService) {}
+  result$: Observable<number[][]> = this.checkService.result$;
+  constructor(public uiService: UiService, public checkService: CheckService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.checkService.result$);
+  }
 }

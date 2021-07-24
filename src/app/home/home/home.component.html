@@ -10,7 +10,11 @@
     <ng-container *ngIf="shikibetu === 'fukusho'"
       ><app-fukusho></app-fukusho
     ></ng-container>
-    <ng-container *ngIf="shikibetu === 'umaren'"></ng-container>
+    <ng-container *ngIf="result$ | async as result">
+      <ng-container *ngIf="shikibetu === 'umaren'">
+        <app-umaren-forms [result]="result"></app-umaren-forms>
+      </ng-container>
+    </ng-container>
   </ng-container>
 </div>
 

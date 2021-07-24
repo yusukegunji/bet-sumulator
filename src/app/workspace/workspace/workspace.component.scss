@@ -1,0 +1,29 @@
+.grid-wrapper {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(5, max(300px));
+  background: #fff;
+  padding: 69px 0 80px;
+  font-size: 13px;
+}
+
+.side-selector {
+  width: 272px;
+  height: calc(100vh - 56px - 77px - 16px);
+  position: fixed;
+  top: 56px;
+  right: 0;
+  z-index: 100;
+  background: #2962ff;
+  padding: 0 16px 16px 16px;
+}
+
+.footer {
+  width: 100vw;
+  padding: 16px;
+  background: rgba(#000, 0.72);
+  color: #fafafa;
+  position: fixed;
+  bottom: 0;
+}

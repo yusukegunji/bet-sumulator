@@ -18,14 +18,10 @@
   </ng-container>
 </div>
 
-<div class="side-selector" *ngIf="uiService.isUmarenSelectorsNavOpen">
-  <app-two-horse-option></app-two-horse-option>
-</div>
-<div class="side-selector" *ngIf="uiService.isUmatanSelectorsNavOpen">
-  <app-two-horse-option></app-two-horse-option>
-</div>
-<div class="side-selector" *ngIf="uiService.isWideSelectorsNavOpen">
-  <app-two-horse-option></app-two-horse-option>
+<div class="side-selector" *ngIf="uiService.isTwoHorseOptionNavOpen">
+  <app-two-horse-option
+    [shikibetu]="uiService.shikibetu"
+  ></app-two-horse-option>
 </div>
 
 <div class="footer">

@@ -9,7 +9,29 @@
   </mat-form-field>
 </ng-container>
 
-<div *ngIf="type === 'kenshu'" class="flex">
+<ng-container *ngIf="type === 'jra'">
+  <mat-form-field appearance="outline">
+    <mat-label>中央競馬場を選択</mat-label>
+    <mat-select [formControl]="jraControl">
+      <mat-option *ngFor="let jou of jra" [value]="jou.value">
+        {{ jou.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
+
+<ng-container *ngIf="type === 'nar'">
+  <mat-form-field appearance="outline">
+    <mat-label>地方競馬場を選択</mat-label>
+    <mat-select [formControl]="narControl">
+      <mat-option *ngFor="let jou of nar" [value]="jou.value">
+        {{ jou.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
+
+<div *ngIf="type === 'shikibetu'" class="flex">
   <form [formGroup]="formGroup" class="flex">
     <div
       formArrayName="shikibetuControls"
@@ -54,25 +76,3 @@
     <mat-icon>add</mat-icon>
   </button>
 </div>
-
-<ng-container *ngIf="type === 'jra'">
-  <mat-form-field appearance="outline">
-    <mat-label>中央競馬場を選択</mat-label>
-    <mat-select [formControl]="jraControl">
-      <mat-option *ngFor="let jou of jra" [value]="jou.value">
-        {{ jou.viewValue }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</ng-container>
-
-<ng-container *ngIf="type === 'nar'">
-  <mat-form-field appearance="outline">
-    <mat-label>地方競馬場を選択</mat-label>
-    <mat-select [formControl]="narControl">
-      <mat-option *ngFor="let jou of nar" [value]="jou.value">
-        {{ jou.viewValue }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</ng-container>

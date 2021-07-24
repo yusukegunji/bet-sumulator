@@ -19,7 +19,7 @@ import NarList from '../../nar.json';
   styleUrls: ['./select.component.scss'],
 })
 export class SelectComponent implements OnInit {
-  @Input() type: string = 'yosoka' || 'kenshu' || 'jra' || 'nar';
+  @Input() type: string = 'yosoka' || 'jra' || 'nar' || 'shikibetu';
 
   yosokaList = YosokaList;
   shikibetuList = ShikibetuList;
@@ -57,15 +57,10 @@ export class SelectComponent implements OnInit {
   setShikibetu(i: number) {
     const val = this.shikibetuControls.controls[i].value.shikibetuControl;
     this.uiService.shikibetuGroup[i] = val;
+    this.uiService.shikibetu = val;
 
-    if (val === 'umaren') {
-      this.uiService.isUmarenSelectorsNavOpen = true;
-    }
-    if (val === 'umatan') {
-      this.uiService.isUmatanSelectorsNavOpen = true;
-    }
-    if (val === 'wide') {
-      this.uiService.isWideSelectorsNavOpen = true;
+    if (val === 'umaren' || 'umatan' || 'wide') {
+      this.uiService.isTwoHorseOptionNavOpen = true;
     }
   }
 

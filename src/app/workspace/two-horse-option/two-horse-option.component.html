@@ -1,0 +1,40 @@
+<div class="container--shikibetu">
+  <div class="btn-wrap">
+    <button class="btn" (click)="uiService.isUmarenSelectorsNavOpen = false">
+      <mat-icon class="btn__icon">clear</mat-icon>
+    </button>
+  </div>
+
+  <div class="header-wrap">
+    <div class="heading">
+      <p class="heading__text">式別：馬連</p>
+    </div>
+  </div>
+
+  <div class="header">
+    <p class="header__item">馬番</p>
+    <p class="header__item">馬1</p>
+    <p class="header__item">馬2</p>
+  </div>
+
+  <form [formGroup]="formGroup">
+    <div
+      formArrayName="checkForms"
+      *ngFor="let form of checkForms.controls; index as i"
+    >
+      <div [formGroupName]="i" class="ranks">
+        <p class="ranks__index">{{ i + 1 }}</p>
+        <mat-checkbox
+          class="checkbox"
+          formControlName="first"
+          (change)="checkFirst($event, i + 1)"
+        ></mat-checkbox>
+        <mat-checkbox
+          class="checkbox"
+          formControlName="second"
+          (change)="checkSecond($event, i + 1)"
+        ></mat-checkbox>
+      </div>
+    </div>
+  </form>
+</div>

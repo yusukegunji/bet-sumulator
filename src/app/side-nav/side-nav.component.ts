@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UiService } from '../services/ui.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-nav.component.scss'],
 })
 export class SideNavComponent implements OnInit {
-  constructor() {}
+  constructor(private uiService: UiService) {}
 
   ngOnInit(): void {}
 
-  toggleNav() {}
+  toggleNav() {
+    this.uiService.isSidenavOpen = !this.uiService.isSidenavOpen;
+  }
 }

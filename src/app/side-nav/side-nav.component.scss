@@ -8,14 +8,14 @@
 
 .head {
   padding: 8px 24px;
-  height: 64px;
-  &__logo {
-    img {
-      width: 200px;
-    }
-  }
+  height: 40px;
   &__logo-link {
     font-size: 16px;
+    line-height: 40px;
+  }
+  &__logo {
+    font-size: 24px;
+    margin-right: 4px;
   }
 }
 
@@ -32,6 +32,7 @@
     transition: ease-out 0.3s;
     padding-left: 8px;
     cursor: pointer;
+    margin-bottom: 4px;
     &:hover {
       color: #fff;
     }

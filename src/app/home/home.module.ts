@@ -2,32 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home/home.component';
 import { SelectorsModule } from '../selectors/selectors.module';
-import { HeaderComponent } from './header/header.component';
-import { TanshoComponent } from './tansho/tansho.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ResultComponent } from './result/result.component';
-import { FukushoComponent } from './fukusho/fukusho.component';
-import { UmarenComponent } from './umaren/umaren.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
-import { UmarenFormsComponent } from './umaren-forms/umaren-forms.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    HeaderComponent,
-    TanshoComponent,
-    ResultComponent,
-    FukushoComponent,
-    UmarenComponent,
-    UmarenFormsComponent,
-  ],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -40,6 +28,8 @@ import { UmarenFormsComponent } from './umaren-forms/umaren-forms.component';
     MatIconModule,
     MatCheckboxModule,
     MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
   ],
 })
 export class HomeModule {}

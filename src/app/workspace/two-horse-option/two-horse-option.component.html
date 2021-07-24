@@ -1,13 +1,21 @@
 <div class="container--shikibetu">
   <div class="btn-wrap">
-    <button class="btn" (click)="uiService.isUmarenSelectorsNavOpen = false">
+    <button class="btn" (click)="closeOption(shikibetu)">
       <mat-icon class="btn__icon">clear</mat-icon>
     </button>
   </div>
 
   <div class="header-wrap">
     <div class="heading">
-      <p class="heading__text">式別：馬連</p>
+      <ng-container *ngIf="shikibetu === 'umaren'">
+        <p class="heading__text">式別：馬連</p>
+      </ng-container>
+      <ng-container *ngIf="shikibetu === 'umatan'">
+        <p class="heading__text">式別：馬単</p>
+      </ng-container>
+      <ng-container *ngIf="shikibetu === 'wide'">
+        <p class="heading__text">式別：ワイド</p>
+      </ng-container>
     </div>
   </div>
 

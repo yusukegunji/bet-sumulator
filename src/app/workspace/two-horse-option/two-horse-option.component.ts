@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Rank } from 'src/app/interfaces/rank';
 import { CheckService } from 'src/app/services/check.service';
@@ -11,6 +11,7 @@ import Ranks from '../../rank.json';
   styleUrls: ['./two-horse-option.component.scss'],
 })
 export class TwoHorseOptionComponent implements OnInit {
+  @Input() shikibetu: string;
   ranks: Rank[] = Ranks;
 
   get checkForms() {
@@ -69,6 +70,12 @@ export class TwoHorseOptionComponent implements OnInit {
       );
       this.checkService.secondChoices = newSecondChoices;
       this.checkService.createResult();
+    }
+  }
+
+  closeOption(shikibetu: string) {
+    if (shikibetu === 'umaren' || 'umatan' || 'wide') {
+      this.uiService.isTwoHorseOptionNavOpen = false;
     }
   }
 }

@@ -25,9 +25,9 @@ body {
 
 body {
   margin: 0;
-  font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans',
-    'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo,
-    'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font-family: 'Noto Sans JP', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial',
+    'Hiragino Sans', 'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic', 'メイリオ',
+    Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   word-break: break-all;
   font-size: 14px;
 }
@@ -73,6 +73,11 @@ img {
 .container {
   max-width: 1600px;
   padding: 16px 24px;
+  margin: 0 auto;
+  &--home {
+    max-width: 1200px;
+    min-height: calc(100vh - 56px);
+  }
   &--header {
     padding: 16px 24px;
   }
@@ -83,6 +88,12 @@ img {
     background: rgba(0, 0, 0, 0.16);
     border-radius: 5px;
     padding: 8px;
+  }
+  &--create-sheet {
+    max-width: 960px;
+    min-height: calc(100vh - 56px);
+    display: grid;
+    place-items: center;
   }
 }
 

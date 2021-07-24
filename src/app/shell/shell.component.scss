@@ -7,15 +7,8 @@
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
 }
 
-.side-selector {
-  width: 272px;
-  height: calc(100vh - 56px - 77px - 16px);
-  position: fixed;
-  top: 56px;
-  right: 0;
-  z-index: 100;
-  background: #2962ff;
-  padding: 0 16px 16px 16px;
+.router-outlet {
+  padding: 56px 0;
 }
 
 .grid-wrapper {

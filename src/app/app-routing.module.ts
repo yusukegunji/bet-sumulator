@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home/home.component';
+import { ShellComponent } from './shell/shell.component';
 
 const routes: Routes = [
   {
@@ -10,7 +10,26 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    component: ShellComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./home/home.module').then((m) => m.HomeModule),
+      },
+      {
+        path: 'create-sheet',
+        loadChildren: () =>
+          import('./create-sheet/create-sheet.module').then(
+            (m) => m.CreateSheetModule
+          ),
+      },
+      {
+        path: 'workspace',
+        loadChildren: () =>
+          import('./workspace/workspace.module').then((m) => m.WorkspaceModule),
+      },
+    ],
   },
 ];
 

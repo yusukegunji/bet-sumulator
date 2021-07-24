@@ -17,9 +17,21 @@ import {
   MatSnackBarModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
 } from '@angular/material/snack-bar';
+import { ShellComponent } from './shell/shell.component';
+import { HeaderComponent } from './header/header.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    ShellComponent,
+    HeaderComponent,
+    SideNavComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,7 +44,12 @@ import {
     SelectorsModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
   ],
+  exports: [SelectorsModule],
   providers: [
     { provide: REGION, useValue: 'asia-northeast1' },
     {

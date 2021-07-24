@@ -1,12 +1,18 @@
-<p>create-sheet works!</p>
-<div class="selectors-group selectors-group--bg">
-  <div class="selector">
-    <app-select [type]="'yosoka'"></app-select>
-  </div>
-  <div class="selector">
-    <app-select [type]="'jra'"></app-select>
-  </div>
-  <div class="selector">
-    <app-select [type]="'nar'"></app-select>
+<div class="container container--create-sheet">
+  <div class="selectors">
+    <p class="selectors__heading">新しいシートを作成</p>
+    <div class="selectors__item">
+      <app-select [type]="'yosoka'"></app-select>
+    </div>
+    <div class="selectors__item">
+      <app-select [type]="'jra'"></app-select>
+    </div>
+    <div class="selectors__item">
+      <app-select [type]="'nar'"></app-select>
+    </div>
+
+    <button mat-raised-button color="primary" class="selectors__submit">
+      作成
+    </button>
   </div>
 </div>

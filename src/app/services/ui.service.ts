@@ -6,7 +6,11 @@ import { Injectable } from '@angular/core';
 export class UiService {
   shikibetu: string;
   shikibetuGroup: string[] = [];
-  isOpen: boolean;
+  isUmarenSelectorsNavOpen: boolean;
+  isUmatanSelectorsNavOpen: boolean;
+  isWideSelectorsNavOpen: boolean;
+
+  isSidenavOpen: boolean;
 
   constructor() {}
 }

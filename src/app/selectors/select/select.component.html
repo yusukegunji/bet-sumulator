@@ -22,6 +22,7 @@
           <mat-select
             formControlName="shikibetuControl"
             (selectionChange)="setShikibetu(i)"
+            (cange)="setShikibetu(i)"
           >
             <mat-option
               *ngFor="let kenshu of shikibetus"

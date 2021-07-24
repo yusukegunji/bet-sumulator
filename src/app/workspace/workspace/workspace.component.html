@@ -1,0 +1,33 @@
+<app-shikibetu-selectors></app-shikibetu-selectors>
+<div class="grid-wrapper">
+  <ng-container *ngFor="let shikibetu of uiService.shikibetuGroup">
+    <ng-container *ngIf="shikibetu === 'tansho'"
+      ><app-tansho-forms></app-tansho-forms
+    ></ng-container>
+    <ng-container *ngIf="shikibetu === 'fukusho'"
+      ><app-fukusho-forms></app-fukusho-forms
+    ></ng-container>
+    <ng-container *ngIf="result$ | async as result">
+      <ng-container *ngIf="shikibetu === 'umaren'">
+        <app-umaren-forms [result]="result"></app-umaren-forms>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="shikibetu === 'umatan'">
+      <app-umatan-forms></app-umatan-forms>
+    </ng-container>
+  </ng-container>
+</div>
+
+<div class="side-selector" *ngIf="uiService.isUmarenSelectorsNavOpen">
+  <app-two-horse-option></app-two-horse-option>
+</div>
+<div class="side-selector" *ngIf="uiService.isUmatanSelectorsNavOpen">
+  <app-two-horse-option></app-two-horse-option>
+</div>
+<div class="side-selector" *ngIf="uiService.isWideSelectorsNavOpen">
+  <app-two-horse-option></app-two-horse-option>
+</div>
+
+<div class="footer">
+  <app-result></app-result>
+</div>

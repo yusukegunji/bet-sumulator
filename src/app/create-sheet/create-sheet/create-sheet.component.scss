@@ -1,11 +1,36 @@
+.heading {
+  text-align: center;
+  font-size: 18px;
+  background: linear-gradient(to right bottom, #303030, #424242);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  color: #fafafa;
+  padding: 16px 24px;
+  border-radius: 5px 5px 0 0;
+}
+
 .selectors {
-  &__heading {
-    text-align: center;
-    font-size: 18px;
+  text-align: left;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 48px 24px;
+  &__item-wrap {
+    display: grid;
+    grid-template-columns: 1fr 64px 1fr;
+    gap: 16px;
     margin-bottom: 24px;
   }
   &__item {
     margin-bottom: 16px;
+  }
+  &__icons {
+    margin-top: -36px;
+    display: flex;
+    align-items: center;
+  }
+  &__icon {
+    font-size: 32px;
+    height: 32px;
+    width: 32px;
+    opacity: 0.64;
   }
   &__submit {
     width: 100%;

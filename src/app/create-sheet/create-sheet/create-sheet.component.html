@@ -1,18 +1,68 @@
 <div class="container container--create-sheet">
-  <div class="selectors">
-    <p class="selectors__heading">新しいシートを作成</p>
-    <div class="selectors__item">
-      <app-select [type]="'yosoka'"></app-select>
-    </div>
-    <div class="selectors__item">
-      <app-select [type]="'jra'"></app-select>
-    </div>
-    <div class="selectors__item">
-      <app-select [type]="'nar'"></app-select>
-    </div>
+  <div>
+    <p class="heading">新しいシートを作成</p>
 
-    <button mat-raised-button color="primary" class="selectors__submit">
-      作成
-    </button>
+    <form class="selectors" [formGroup]="forms" (ngSubmit)="createSheet()">
+      <div class="selectors__item">
+        <mat-form-field appearance="outline">
+          <mat-label>予想家を選択</mat-label>
+          <mat-select formControlName="yosokaControl">
+            <mat-option
+              *ngFor="let yosoka of yosokaList"
+              [value]="yosoka.value"
+            >
+              {{ yosoka.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="forms.controls.yosokaControl.errors?.required"
+            >予想家は必ず選択してください。</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="selectors__item-wrap">
+        <div class="selectors__item">
+          <mat-form-field appearance="outline">
+            <mat-label>中央競馬場を選択</mat-label>
+            <mat-select formControlName="jraControl">
+              <mat-option *ngFor="let jou of jra" [value]="jou.value">
+                {{ jou.viewValue }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.jraControl.errors?.eitherRequired"
+              >必ず中央または地方どちらかの競馬場を選択してください。</mat-error
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="selectors__icons">
+          <mat-icon class="selectors__icon">arrow_left</mat-icon>
+          <mat-icon class="selectors__icon">arrow_right</mat-icon>
+        </div>
+
+        <div class="selectors__item">
+          <mat-form-field appearance="outline">
+            <mat-label>地方競馬場を選択</mat-label>
+            <mat-select formControlName="narControl">
+              <mat-option *ngFor="let jou of nar" [value]="jou.value">
+                {{ jou.viewValue }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.narControl.errors?.eitherRequired"
+              >必ず中央または地方どちらかの競馬場を選択してください。</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="selectors__submit"
+        [disabled]="forms.invalid || forms.pristine || isProcessing"
+      >
+        作成
+      </button>
+    </form>
   </div>
 </div>

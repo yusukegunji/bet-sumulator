@@ -1,17 +1,7 @@
-import { Input } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { UiService } from 'src/app/services/ui.service';
-import YosokaList from '../../yosoka.json';
 import ShikibetuList from '../../shikibetu.json';
-import JraList from '../../jra.json';
-import NarList from '../../nar.json';
 
 @Component({
   selector: 'app-select',
@@ -20,16 +10,7 @@ import NarList from '../../nar.json';
 })
 export class SelectComponent implements OnInit {
   @Input() type: string = 'yosoka' || 'jra' || 'nar' || 'shikibetu';
-
-  yosokaList = YosokaList;
   shikibetuList = ShikibetuList;
-  jra = JraList;
-  nar = NarList;
-
-  yosokaControl = new FormControl('', Validators.required);
-  jraControl = new FormControl('');
-  narControl = new FormControl('');
-
   formGroup: FormGroup;
 
   get shikibetuControl(): FormGroup {
@@ -59,8 +40,10 @@ export class SelectComponent implements OnInit {
     this.uiService.shikibetuGroup[i] = val;
     this.uiService.shikibetu = val;
 
-    if (val === 'umaren' || 'umatan' || 'wide') {
+    if (val === ('umaren' || 'umatan' || 'wide')) {
       this.uiService.isTwoHorseOptionNavOpen = true;
+    } else {
+      this.uiService.isTwoHorseOptionNavOpen = false;
     }
   }
 

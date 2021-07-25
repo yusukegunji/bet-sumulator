@@ -1,21 +1,23 @@
-<mat-sidenav-container autosize [hasBackdrop]="false">
-  <mat-sidenav
-    mode="over"
-    fixedInViewport
-    class="sidenav"
-    [opened]="uiService.isSidenavOpen"
-  >
-    <div class="main-nav">
-      <app-side-nav *ngIf="uiService.isSidenavOpen"></app-side-nav>
-    </div>
-  </mat-sidenav>
+<ng-container *ngIf="user$ | async as user">
+  <mat-sidenav-container autosize [hasBackdrop]="false">
+    <mat-sidenav
+      mode="over"
+      fixedInViewport
+      class="sidenav"
+      [opened]="uiService.isSidenavOpen"
+    >
+      <div class="main-nav">
+        <app-side-nav *ngIf="uiService.isSidenavOpen"></app-side-nav>
+      </div>
+    </mat-sidenav>
 
-  <mat-sidenav-content>
-    <div class="header">
-      <app-header></app-header>
-    </div>
-    <div class="router-outlet">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <mat-sidenav-content>
+      <div class="header">
+        <app-header></app-header>
+      </div>
+      <div class="router-outlet">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>

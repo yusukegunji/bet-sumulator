@@ -91,7 +91,7 @@ img {
   }
   &--create-sheet {
     max-width: 960px;
-    min-height: calc(100vh - 56px);
+    min-height: calc(100vh - 56px - 32px - 56px);
     display: grid;
     place-items: center;
   }

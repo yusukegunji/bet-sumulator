@@ -1,8 +1,12 @@
 <div class="container container--create-sheet">
-  <div>
+  <div *ngIf="user$ | async as user">
     <p class="heading">新しいシートを作成</p>
 
-    <form class="selectors" [formGroup]="forms" (ngSubmit)="createSheet()">
+    <form
+      class="selectors"
+      [formGroup]="forms"
+      (ngSubmit)="createSheet(user.uid)"
+    >
       <div class="selectors__item">
         <mat-form-field appearance="outline">
           <mat-label>予想家を選択</mat-label>

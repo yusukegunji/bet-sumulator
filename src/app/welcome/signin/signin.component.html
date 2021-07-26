@@ -1,0 +1,59 @@
+<div class="contents">
+  <form class="form" [formGroup]="signinForm">
+    <mat-form-field>
+      <mat-label>メールアドレス</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        type="email"
+        required
+        autocomplete="current-email"
+      />
+      <mat-error *ngIf="emailControl.hasError('required')"
+        >必須入力です</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>パスワード</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        required
+        autocomplete="current-password"
+      />
+      <mat-icon class="password-icon" matSuffix (click)="hide = !hide">{{
+        hide ? 'visibility_off' : 'visibility'
+      }}</mat-icon>
+      <mat-error *ngIf="passwordControl.hasError('required')"
+        >必須入力です</mat-error
+      >
+      <mat-hint
+        class="form__reset"
+        align="end"
+        type="button"
+        (click)="openResetDialog()"
+        >パスワードをお忘れですか？</mat-hint
+      >
+    </mat-form-field>
+  </form>
+  <ng-container *ngIf="signinForm.invalid; else login">
+    <button
+      [disabled]="signinForm.invalid"
+      class="login-btn login__item"
+      mat-button
+      (click)="signin()"
+    >
+      ログイン
+    </button>
+  </ng-container>
+  <ng-template #login>
+    <button
+      class="login-btn login-btn--active login__item"
+      mat-button
+      (click)="signin()"
+    >
+      ログイン
+    </button>
+  </ng-template>
+</div>

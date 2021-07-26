@@ -11,5 +11,7 @@ export class UiService {
 
   isSidenavOpen: boolean;
 
+  isLoading: boolean;
+
   constructor() {}
 }

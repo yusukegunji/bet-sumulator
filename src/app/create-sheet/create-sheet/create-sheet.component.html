@@ -11,10 +11,7 @@
         <mat-form-field appearance="outline">
           <mat-label>予想家を選択</mat-label>
           <mat-select formControlName="yosokaControl">
-            <mat-option
-              *ngFor="let yosoka of yosokaList"
-              [value]="yosoka.value"
-            >
+            <mat-option *ngFor="let yosoka of yosokaList" [value]="yosoka.id">
               {{ yosoka.viewValue }}
             </mat-option>
           </mat-select>

@@ -1,4 +1,15 @@
 <div class="result-flex">
+  <div class="result__sheet">
+    <p class="result__avatar">
+      <img [src]="yosoka?.avatarURL" alt="" />
+    </p>
+    <p class="result__jo">
+      {{ jo?.viewValue }}
+    </p>
+  </div>
+
+  <span class="spacer"></span>
+
   <div class="result">
     <p class="result__heading">合計金額</p>
     <p class="result__result">{{ betService.totalBet }}円</p>

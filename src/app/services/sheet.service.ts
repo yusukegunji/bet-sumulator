@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import firebase from 'firebase/app';
+import { Observable } from 'rxjs';
+import { Sheet } from '../interfaces/sheet';
 
 @Injectable({
   providedIn: 'root',
@@ -14,18 +15,19 @@ export class SheetService {
     private snackBar: MatSnackBar
   ) {}
 
-  async createSheet(formData: { yosoka: string; joId: string }, uid: string) {
+  async createSheet(sheetData: Omit<Sheet, 'id'>) {
     const sheetId = this.db.createId();
     await this.db
       .doc(`sheets/${sheetId}`)
       .set({
         id: `${sheetId}`,
-        yosokaId: formData.yosoka,
-        joId: formData.joId,
-        uid: uid,
-        createdAt: firebase.firestore.Timestamp.now(),
+        ...sheetData,
       })
       .then(() => this.snackBar.open('新しいシートが作成されました'))
       .finally(() => this.router.navigateByUrl(`/workspace/${sheetId}`));
+  }
+
+  getSheet(sheetId: string): Observable<Sheet> {
+    return this.db.doc<Sheet>(`sheets/${sheetId}`).valueChanges();
   }
 }

@@ -1,6 +1,26 @@
 [
-  { "value": "ai_escape", "viewValue": "Aiエスケープ" },
-  { "value": "hiyoko", "viewValue": "HIYOKO" },
-  { "value": "ryuji", "viewValue": "リュウジ" },
-  { "value": "rena", "viewValue": "RENA" }
+  {
+    "id": "329",
+    "value": "ai_escape",
+    "viewValue": "Aiエスケープ",
+    "avatarURL": "/assets/images/ai_escape.jpeg"
+  },
+  {
+    "id": "292",
+    "value": "hiyoko",
+    "viewValue": "HIYOKO",
+    "avatarURL": "/assets/images/hiyoko.jpeg"
+  },
+  {
+    "id": "279",
+    "value": "ryuji",
+    "viewValue": "リュウジ",
+    "avatarURL": "/assets/images/ryuji.jpeg"
+  },
+  {
+    "id": "156",
+    "value": "rena",
+    "viewValue": "RENA",
+    "avatarURL": "/assets/images/rena.jpeg"
+  }
 ]

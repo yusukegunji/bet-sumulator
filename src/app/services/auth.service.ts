@@ -6,14 +6,16 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { Observable, of } from 'rxjs';
 import { User } from '../interfaces/user';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { UserService } from './user.service';
+import { UiService } from './ui.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   isProcessing: boolean = false;
+  afUser$;
   user$: Observable<User> = this.afAuth.authState.pipe(
     switchMap((afUser) => {
       if (afUser) {
@@ -28,7 +30,8 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private snackBar: MatSnackBar,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private uiService: UiService
   ) {}
 
   async googleLogin(): Promise<void> {
@@ -56,6 +59,44 @@ export class AuthService {
       })
       .then(() => {
         this.snackBar.open('ログアウトしました');
+      });
+  }
+
+  async signinWithEmail(params: {
+    email: string;
+    password: string;
+  }): Promise<void> {
+    return this.afAuth
+      .signInWithEmailAndPassword(params.email, params.password)
+      .finally(() => {
+        if (
+          this.afUser$.pipe(take(1)).subscribe((user) => user.emailVerified)
+        ) {
+          this.router.navigate(['/add-books']);
+          this.uiService.isLoading = false;
+        } else {
+          this.uiService.isLoading = false;
+          return;
+        }
+      })
+      .catch((error) => {
+        this.uiService.isLoading = false;
+        switch (error.code) {
+          case 'auth/user-not-found':
+            alert('このメールアドレスのユーザーは見つかりません');
+            break;
+          case 'auth/wrong-password':
+            alert('パスワードが間違っています');
+            break;
+          case 'auth/invalid-email':
+            alert(
+              '有効なアカウントではありません。、送られたメールから認証を完了してください。'
+            );
+            break;
+        }
+      })
+      .then(() => {
+        return;
       });
   }
 }

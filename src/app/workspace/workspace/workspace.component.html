@@ -1,4 +1,5 @@
 <app-shikibetu-selectors></app-shikibetu-selectors>
+
 <div class="grid-wrapper">
   <ng-container *ngFor="let shikibetu of uiService.shikibetuGroup">
     <ng-container *ngIf="shikibetu === 'tansho'"
@@ -25,5 +26,5 @@
 </div>
 
 <div class="footer">
-  <app-result></app-result>
+  <app-result [sheet]="sheet" [yosoka]="yosoka" [jo]="jo"></app-result>
 </div>

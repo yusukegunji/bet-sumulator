@@ -1,0 +1,47 @@
+.members-wrap {
+  min-height: 100vh;
+}
+
+.create {
+  margin: 48px auto;
+}
+
+.members {
+  display: flex;
+  flex-flow: column;
+  &__heading {
+    margin-bottom: 16px;
+  }
+  &__photo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  &__box {
+    border-radius: 56px;
+    &:hover {
+      background: rgba(#2962ff, 0.16);
+    }
+  }
+  &__body {
+    display: grid;
+    grid-template-columns: 64px 1fr 1fr 80px;
+    gap: 16px;
+    align-items: center;
+    padding: 8px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  &__name {
+    margin-right: 16px;
+  }
+  &__createdAt {
+    font-size: 14px;
+  }
+  &__btn {
+    &:hover {
+      background: rgba(0, 0, 0, 0.16);
+    }
+  }
+}

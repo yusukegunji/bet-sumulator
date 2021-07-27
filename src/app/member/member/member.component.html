@@ -1,0 +1,50 @@
+<div class="members-wrap">
+  <div class="container container--member">
+    <div class="create">
+      <div class="create__heading">
+        <p>メンバーを追加</p>
+      </div>
+      <app-create-member></app-create-member>
+    </div>
+
+    <div class="members">
+      <div class="members__heading">
+        <p>メンバー一覧</p>
+      </div>
+
+      <div
+        class="members__box"
+        *ngFor="let member of members$ | async as members"
+      >
+        <div class="members__body">
+          <div class="members__photo">
+            <img [src]="member.photoURL" alt="" />
+          </div>
+          <p class="members__name">{{ member.name }}</p>
+          <p class="members__createdAt">
+            {{ member.createdAt.toDate() | date: 'yyyy/MM/dd' }}作成
+          </p>
+          <button
+            class="members__btn"
+            mat-icon-button
+            [matMenuTriggerFor]="userMenu"
+          >
+            <mat-icon class="members__icon">more_vert</mat-icon>
+          </button>
+          <mat-menu #userMenu="matMenu" class="header__menu">
+            <a mat-menu-item routerLink="/">
+              <mat-icon>settings</mat-icon>
+              <span>編集</span>
+            </a>
+            <button mat-menu-item (click)="deleteUser(member.uid)">
+              <mat-icon>do_disturb</mat-icon>
+              <span>削除</span>
+            </button>
+          </mat-menu>
+        </div>
+
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+  </div>
+</div>

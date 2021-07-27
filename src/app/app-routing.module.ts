@@ -29,6 +29,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./workspace/workspace.module').then((m) => m.WorkspaceModule),
       },
+      {
+        path: 'members',
+        loadChildren: () =>
+          import('./member/member.module').then((m) => m.MemberModule),
+      },
     ],
   },
 ];

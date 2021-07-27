@@ -9,6 +9,7 @@ import { User } from '../interfaces/user';
 import { switchMap, take } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { UiService } from './ui.service';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +32,8 @@ export class AuthService {
     private snackBar: MatSnackBar,
     private router: Router,
     private userService: UserService,
-    private uiService: UiService
+    private uiService: UiService,
+    private fns: AngularFireFunctions
   ) {}
 
   async googleLogin(): Promise<void> {
@@ -60,6 +62,32 @@ export class AuthService {
       .then(() => {
         this.snackBar.open('ログアウトしました');
       });
+  }
+
+  async createUser(params: { email: string; password: string }): Promise<void> {
+    this.isProcessing = true;
+    this.afAuth
+      .createUserWithEmailAndPassword(params.email, params.password)
+      .then((result) => {
+        result.user.sendEmailVerification();
+      })
+      .finally(() => {
+        alert(
+          'メールを送信しました。ログインするにはメールアドレスの確認を完了してください。'
+        );
+      })
+      .catch((error) => {
+        this.isProcessing = false;
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            alert('このアドレスは既に登録されています。');
+            break;
+          case 'auth/invalid-email':
+            alert('メールアドレスが不正です');
+            break;
+        }
+      });
+    this.isProcessing = false;
   }
 
   async signinWithEmail(params: {
@@ -97,6 +125,26 @@ export class AuthService {
       })
       .then(() => {
         return;
+      });
+  }
+
+  async deleteUser(uid: string): Promise<void> {
+    this.uiService.isLoading = true;
+    const callable = this.fns.httpsCallable('deleteAfUser');
+    return callable(uid)
+      .toPromise()
+      .then(() => {
+        this.router.navigateByUrl('/welcome');
+        this.snackBar.open('削除が完了しました');
+      })
+      .catch((err) => {
+        console.log(err);
+        this.snackBar.open(
+          '削除に失敗しました。もう一度退会を実行してください'
+        );
+      })
+      .finally(() => {
+        this.uiService.isLoading = false;
       });
   }
 }

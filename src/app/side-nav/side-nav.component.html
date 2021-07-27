@@ -26,15 +26,20 @@
           routerLink="/create-sheet"
           class="menu__children"
           [routerLinkActive]="['is-active']"
+          (click)="navigate('/create-sheet')"
         >
           <mat-icon class="menu__icon">add</mat-icon>
           シート作成</a
         >
+
+        <mat-divider></mat-divider>
+
         <a
           mat-list-item
           routerLink="/members"
           class="menu__children"
           [routerLinkActive]="['is-active']"
+          (click)="navigate('/members')"
         >
           <mat-icon class="menu__icon">group</mat-icon>
           メンバー</a

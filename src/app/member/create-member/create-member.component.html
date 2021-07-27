@@ -1,0 +1,56 @@
+<form [formGroup]="signUpForm" class="create-member">
+  <mat-form-field appearance="outline">
+    <mat-label>メールアドレスを入力</mat-label>
+    <input
+      formControlName="email"
+      matInput
+      type="email"
+      required
+      autocomplete="email"
+    />
+    <mat-error *ngIf="emailControl.hasError('required')"
+      >必須入力です</mat-error
+    >
+  </mat-form-field>
+
+  <button (click)="generatetPassword()" class="generate-btn" mat-flat-button>
+    パスワードを自動生成
+  </button>
+
+  <mat-form-field appearance="outline">
+    <mat-label>パスワードを入力</mat-label>
+    <input
+      formControlName="password"
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      required
+      autocomplete="current-password"
+    />
+    <mat-icon class="password-icon" matSuffix (click)="hide = !hide">{{
+      hide ? 'visibility_off' : 'visibility'
+    }}</mat-icon>
+    <mat-hint
+      >*{{
+        passwordLength
+      }}文字以上<br />*半角英数字の組み合わせで作成してください<br />*かな、記号は使用できません</mat-hint
+    >
+    <mat-error *ngIf="passwordControl.hasError('required')"
+      >必須入力です</mat-error
+    >
+    <mat-error *ngIf="passwordControl.hasError('password')">
+      パスワードは大文字と小文字のアルファベットと英数字の{{
+        passwordLength
+      }}文字以上で登録してください
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    class="signup-btn wrap-gradient"
+    [disabled]="signUpForm.invalid"
+    (click)="signUp()"
+    mat-raised-button
+    color="primary"
+  >
+    作 成
+  </button>
+</form>

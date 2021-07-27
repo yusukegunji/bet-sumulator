@@ -1,0 +1,21 @@
+.create-member {
+  padding: 16px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 200px 1fr 200px;
+  gap: 16px;
+}
+
+.generate-btn {
+  height: 54px;
+}
+
+.signup-btn {
+  height: 54px;
+  color: white;
+}
+
+.password-icon {
+  color: #808080;
+  cursor: pointer;
+}

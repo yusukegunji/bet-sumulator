@@ -95,6 +95,9 @@ img {
     display: grid;
     place-items: center;
   }
+  &--member {
+    max-width: 960px;
+  }
 }
 
 .selectors-group {

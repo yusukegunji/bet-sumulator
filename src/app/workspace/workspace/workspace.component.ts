@@ -43,7 +43,7 @@ export class WorkspaceComponent implements OnInit {
     this.sheet$.subscribe((sheet) => {
       this.sheet = sheet;
       this.yosoka = this.yosokaList.find((data) => data.id === sheet.yosokaId);
-      this.jo = this.joList.find((jo) => jo.value === sheet.joId);
+      this.jo = this.joList.find((jo) => jo.id === sheet.joId);
     });
   }
 }

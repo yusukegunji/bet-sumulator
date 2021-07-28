@@ -1,3 +1,89 @@
-<div class="container container--home">
-  <p>home works!</p>
+<div class="sheets-wrap">
+  <div class="container container--sheets">
+    <div class="ratest">
+      <div class="ratest__heading">
+        <h2>最近のワーク</h2>
+      </div>
+
+      <div class="ratest__box">
+        <ng-container *ngIf="ratestSheetList?.length > 0; else default">
+          <div
+            class="ratest__card"
+            *ngFor="let sheet of ratestSheetList | slice: 0:6"
+          >
+            <div class="ratest__avatar">
+              <img [src]="sheet.yosoka.avatarURL" alt="" />
+            </div>
+            <div class="ratest__jo">
+              <p class="ratest__id">{{ sheet.joId }}</p>
+              <p class="ratest__name">{{ sheet.jo.viewValue }}</p>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #default>
+          <p class="ratest__default">最近のワークはありません。</p>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="sheets">
+      <div class="sheets__heading">
+        <h2>ワークシート一覧</h2>
+      </div>
+
+      <div
+        class="sheets__box"
+        *ngFor="let sheet of sheetList$ | async as sheetList"
+      >
+        <div class="sheets__body" (click)="navigate(sheet.id)">
+          <div class="sheets__avatar">
+            <img [src]="sheet.yosoka.avatarURL" alt="" />
+          </div>
+          <div class="sheets__jo">
+            <p class="sheets__id">{{ sheet.joId }}</p>
+            <p class="sheets__name">{{ sheet.jo.viewValue }}</p>
+          </div>
+
+          <div class="sheets__user">
+            <div class="sheets__photo">
+              <img [src]="sheet.createdUser.photoURL" alt="" />
+            </div>
+            <p class="sheets__createdAt">
+              {{ sheet.createdAt.toDate() | date: 'yyyy/MM/dd' }}作成
+            </p>
+          </div>
+
+          <div class="sheets__user">
+            <div class="sheets__photo">
+              <img [src]="sheet.updatedUser.photoURL" alt="" />
+            </div>
+            <p class="sheets__createdAt">
+              {{ sheet.updatedAt.toDate() | date: 'yyyy/MM/dd' }}更新
+            </p>
+          </div>
+
+          <button
+            class="sheets__btn"
+            mat-icon-button
+            [matMenuTriggerFor]="userMenu"
+            (click)="$event.stopPropagation()"
+          >
+            <mat-icon class="sheets__icon">more_vert</mat-icon>
+          </button>
+          <mat-menu #userMenu="matMenu" class="header__menu">
+            <a mat-menu-item (click)="navigate(sheet.id)">
+              <mat-icon>settings</mat-icon>
+              <span>編集</span>
+            </a>
+            <button mat-menu-item>
+              <mat-icon>do_disturb</mat-icon>
+              <span>削除</span>
+            </button>
+          </mat-menu>
+        </div>
+
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+  </div>
 </div>

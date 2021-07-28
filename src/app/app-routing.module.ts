@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { ShellComponent } from './shell/shell.component';
 
 const routes: Routes = [
@@ -10,6 +11,8 @@ const routes: Routes = [
   },
   {
     path: '',
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
     component: ShellComponent,
     children: [
       {

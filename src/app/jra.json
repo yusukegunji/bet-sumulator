@@ -1,12 +1,12 @@
 [
-  { "kaisai": "jra", "value": "01", "viewValue": "札幌" },
-  { "kaisai": "jra", "value": "02", "viewValue": "函館" },
-  { "kaisai": "jra", "value": "03", "viewValue": "福島" },
-  { "kaisai": "jra", "value": "04", "viewValue": "新潟" },
-  { "kaisai": "jra", "value": "05", "viewValue": "東京" },
-  { "kaisai": "jra", "value": "06", "viewValue": "中山" },
-  { "kaisai": "jra", "value": "07", "viewValue": "中京" },
-  { "kaisai": "jra", "value": "08", "viewValue": "京都" },
-  { "kaisai": "jra", "value": "09", "viewValue": "阪神" },
-  { "kaisai": "jra", "value": "10", "viewValue": "小倉" }
+  { "kaisai": "jra", "id": "01", "viewValue": "札幌" },
+  { "kaisai": "jra", "id": "02", "viewValue": "函館" },
+  { "kaisai": "jra", "id": "03", "viewValue": "福島" },
+  { "kaisai": "jra", "id": "04", "viewValue": "新潟" },
+  { "kaisai": "jra", "id": "05", "viewValue": "東京" },
+  { "kaisai": "jra", "id": "06", "viewValue": "中山" },
+  { "kaisai": "jra", "id": "07", "viewValue": "中京" },
+  { "kaisai": "jra", "id": "08", "viewValue": "京都" },
+  { "kaisai": "jra", "id": "09", "viewValue": "阪神" },
+  { "kaisai": "jra", "id": "10", "viewValue": "小倉" }
 ]

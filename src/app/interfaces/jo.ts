@@ -1,5 +1,5 @@
 export interface Jo {
   kaisai: string;
-  value: string;
+  id: string;
   viewValue: string;
 }

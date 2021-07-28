@@ -26,8 +26,8 @@
           <mat-form-field appearance="outline">
             <mat-label>中央競馬場を選択</mat-label>
             <mat-select formControlName="jraControl">
-              <mat-option *ngFor="let jou of jra" [value]="jou.value">
-                {{ jou.viewValue }}
+              <mat-option *ngFor="let jo of jra" [value]="jo.id">
+                {{ jo.viewValue }}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="f.jraControl.errors?.eitherRequired"
@@ -45,8 +45,8 @@
           <mat-form-field appearance="outline">
             <mat-label>地方競馬場を選択</mat-label>
             <mat-select formControlName="narControl">
-              <mat-option *ngFor="let jou of nar" [value]="jou.value">
-                {{ jou.viewValue }}
+              <mat-option *ngFor="let jo of nar" [value]="jo.id">
+                {{ jo.viewValue }}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="f.narControl.errors?.eitherRequired"

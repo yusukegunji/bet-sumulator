@@ -95,7 +95,8 @@ img {
     display: grid;
     place-items: center;
   }
-  &--member {
+  &--member,
+  &--sheets {
     max-width: 960px;
   }
 }

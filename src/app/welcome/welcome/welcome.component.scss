@@ -50,8 +50,14 @@
     display: grid;
     place-items: center;
     &--title {
-      background: linear-gradient(to right, #396afc, #2948ff);
+      background: linear-gradient(to right top, #2948ff, #396afc);
     }
+  }
+  img {
+    width: 80px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 4px;
   }
   &__title {
     font-size: 24px;

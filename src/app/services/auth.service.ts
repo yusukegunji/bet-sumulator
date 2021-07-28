@@ -16,7 +16,7 @@ import { AngularFireFunctions } from '@angular/fire/functions';
 })
 export class AuthService {
   isProcessing: boolean = false;
-  afUser$;
+  afUser$: Observable<firebase.default.User> = this.afAuth.user;
   user$: Observable<User> = this.afAuth.authState.pipe(
     switchMap((afUser) => {
       if (afUser) {

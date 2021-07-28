@@ -51,7 +51,8 @@ export class CreateSheetComponent implements OnInit {
     const sheetData = {
       yosokaId: formData.yosokaControl,
       joId: formData.jraControl || formData.narControl,
-      uid: uid,
+      createdUid: uid,
+      updatedUid: uid,
       createdAt: firebase.firestore.Timestamp.now(),
       updatedAt: firebase.firestore.Timestamp.now(),
     };

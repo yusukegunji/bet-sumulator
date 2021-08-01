@@ -1,0 +1,35 @@
+export interface Race {
+  res1?: number;
+  res2?: number;
+  res3?: number;
+  res4?: number;
+  res5?: number;
+  res6?: number;
+  res7?: number;
+  res8?: number;
+  res9?: number;
+  res10?: number;
+  res11?: number;
+  res12?: number;
+  res13?: number;
+  res14?: number;
+  res15?: number;
+  tansho1?: number;
+  tansho2?: number;
+  umaren1?: number;
+  umaren2?: number;
+  umaren3?: number;
+  umatan1?: number;
+  umatan2?: number;
+  umatan3?: number;
+  umatan4?: number;
+  sanpuku1?: number;
+  sanpuku2?: number;
+  sanpuku3?: number;
+  santan1?: number;
+  santan2?: number;
+  santan3?: number;
+  wide1?: number;
+  wide2?: number;
+  wide3?: number;
+}

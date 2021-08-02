@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { Jo } from 'src/app/interfaces/jo';
+import { Race } from 'src/app/interfaces/race';
 import { Rank } from 'src/app/interfaces/rank';
 import { BetService } from 'src/app/services/bet.service';
+import { RaceService } from 'src/app/services/race.service';
 import Ranks from '../../rank.json';
 
 @Component({
@@ -9,15 +14,26 @@ import Ranks from '../../rank.json';
   templateUrl: './tansho-forms.component.html',
   styleUrls: ['./tansho-forms.component.scss'],
 })
-export class TanshoFormsComponent implements OnInit {
+export class TanshoFormsComponent implements OnInit, AfterViewInit {
+  @Input() jo: Jo;
   ranks: Rank[] = Ranks;
   betMoneyGroup: FormGroup;
+  winRaces$: Observable<Race[]>;
+  winRaces: number[] = [];
+  venue$: Observable<Jo>;
+  raceCount: number;
+  appearanceRate: number;
+  appearanceRates: number[] = [];
 
   get betForms(): FormArray {
     return this.betMoneyGroup.get('betForms') as FormArray;
   }
 
-  constructor(private betService: BetService, private fb: FormBuilder) {}
+  constructor(
+    private betService: BetService,
+    private fb: FormBuilder,
+    private raceService: RaceService
+  ) {}
 
   buildBetForms() {
     return this.fb.group({
@@ -34,7 +50,11 @@ export class TanshoFormsComponent implements OnInit {
       betForms: this.fb.array([]),
     });
 
-    this.ranks.forEach(() => {
+    this.raceService.getVenue(this.jo.id).subscribe((venue) => {
+      this.raceCount = venue.raceCount;
+    });
+
+    this.ranks.forEach((rank) => {
       this.addBetforms();
     });
 
@@ -51,6 +71,25 @@ export class TanshoFormsComponent implements OnInit {
           );
         }
       }
+    });
+  }
+
+  ngAfterViewInit() {
+    this.ranks.forEach((rank) => {
+      this.raceService
+        .getWinRaces(rank.index, this.jo.id)
+        .pipe(
+          map((races) => {
+            const winNumOfAppears = races.length;
+            this.appearanceRate =
+              Math.floor((winNumOfAppears / this.raceCount) * 100 * 10) / 10;
+
+            this.appearanceRates.push(this.appearanceRate);
+            this.winRaces.push(winNumOfAppears);
+          })
+        )
+        .subscribe();
+      console.log(this.winRaces);
     });
   }
 }

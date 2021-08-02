@@ -28,18 +28,24 @@
           step="100"
         />
       </mat-form-field>
+      <!-- <ng-container *ngIf="winRaces$ | async as winRaces"> -->
+      <ng-container *ngIf="winRaces">
+        <div class="row__result">
+          <p>{{ winRaces[i] }}</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="appearanceRates">
+        <div class="row__result">
+          <p>{{ appearanceRates[i] }}%</p>
+        </div>
+      </ng-container>
       <div class="row__result">
         <p>11</p>
       </div>
       <div class="row__result">
         <p>11</p>
       </div>
-      <div class="row__result">
-        <p>11</p>
-      </div>
-      <div class="row__result">
-        <p>11</p>
-      </div>
+      <!-- </ng-container> -->
     </div>
   </div>
 </form>

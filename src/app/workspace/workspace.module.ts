@@ -16,6 +16,8 @@ import { ResultComponent } from './result/result.component';
 import { TwoHorseOptionComponent } from './two-horse-option/two-horse-option.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { HotTableModule } from '@handsontable/angular';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     MatCheckboxModule,
     MatIconModule,
+    HotTableModule,
   ],
 })
 export class WorkspaceModule {}

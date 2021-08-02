@@ -25,6 +25,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { HotTableModule } from '@handsontable/angular';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSidenavModule,
     MatListModule,
     MatDividerModule,
+    HotTableModule,
   ],
   exports: [SelectorsModule],
   providers: [

@@ -3,7 +3,7 @@
 <div class="grid-wrapper">
   <ng-container *ngFor="let shikibetu of uiService.shikibetuGroup">
     <ng-container *ngIf="shikibetu === 'tansho'"
-      ><app-tansho-forms></app-tansho-forms
+      ><app-tansho-forms [jo]="jo"></app-tansho-forms
     ></ng-container>
     <ng-container *ngIf="shikibetu === 'fukusho'"
       ><app-fukusho-forms></app-fukusho-forms
@@ -18,6 +18,10 @@
     </ng-container>
   </ng-container>
 </div>
+
+<ng-container *ngIf="dataset">
+  <hot-table [settings]="settings"> </hot-table>
+</ng-container>
 
 <div class="side-selector" *ngIf="uiService.isTwoHorseOptionNavOpen">
   <app-two-horse-option

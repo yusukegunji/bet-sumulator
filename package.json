@@ -21,8 +21,10 @@
     "@angular/platform-browser": "~12.1.0",
     "@angular/platform-browser-dynamic": "~12.1.0",
     "@angular/router": "~12.1.0",
+    "@handsontable/angular": "^9.0.2",
     "deepmerge": "^4.2.2",
     "firebase": "^7.0 || ^8.0",
+    "handsontable": "^9.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

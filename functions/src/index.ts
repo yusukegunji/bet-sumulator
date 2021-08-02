@@ -4,6 +4,7 @@ import * as admin from 'firebase-admin';
 admin.initializeApp(functions.config().firebase);
 
 export * from './user.function';
+export * from './race.data.function';
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript

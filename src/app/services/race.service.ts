@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { Jo } from '../interfaces/jo';
+import { Race } from '../interfaces/race';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +10,15 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class RaceService {
   constructor(private db: AngularFirestore) {}
 
-  // getNumOfAppears(index: number) {
-  //   return this.db.collection(`races`, (ref) => ref.where('res'));
-  // }
+  getWinRaces(index: number, joId: number): Observable<Race[]> {
+    return this.db
+      .collection<Race>('races', (ref) =>
+        ref.where('res1', '==', index).where('joId', '==', joId)
+      )
+      .valueChanges();
+  }
+
+  getVenue(joId: number): Observable<Jo> {
+    return this.db.doc<Jo>(`venues/${joId}`).valueChanges();
+  }
 }

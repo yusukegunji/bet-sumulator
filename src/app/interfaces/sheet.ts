@@ -5,7 +5,7 @@ import { Yosoka } from './yosoka';
 export interface Sheet {
   id: string;
   yosokaId: string;
-  joId: string;
+  joId: number;
   createdUid: string;
   updatedUid: string;
   createdAt: firebase.default.firestore.Timestamp;

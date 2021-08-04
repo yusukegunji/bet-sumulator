@@ -26,6 +26,7 @@ export class TanshoFormsComponent implements OnInit, AfterViewInit {
   appearanceRates: number[] = [];
   totalDividendArr: number[] = [];
   avgDividendArr: number[] = [];
+  expectationArr: number[] = [];
 
   get betForms(): FormArray {
     return this.betMoneyGroup.get('betForms') as FormArray;
@@ -95,14 +96,14 @@ export class TanshoFormsComponent implements OnInit, AfterViewInit {
             );
 
             this.totalDividendArr.forEach((total) => {
-              console.log(total);
-              console.log(winNumOfAppears);
-
               this.avgDividendArr[i] =
                 (Math.floor(total / winNumOfAppears) * 10) / 10;
-            });
 
-            console.log(this.avgDividendArr);
+              this.expectationArr[i] =
+                Math.floor(
+                  this.avgDividendArr[i] * (this.appearanceRates[i] / 100) * 10
+                ) / 10;
+            });
           })
         )
         .subscribe();

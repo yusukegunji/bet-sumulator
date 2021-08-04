@@ -39,9 +39,11 @@
           <p>{{ appearanceRates[i] }}%</p>
         </div>
       </ng-container>
-      <div class="row__result">
-        <p>11</p>
-      </div>
+      <ng-container *ngIf="totalDividendArr">
+        <div class="row__result">
+          <p>{{ totalDividendArr[i] }}</p>
+        </div>
+      </ng-container>
       <div class="row__result">
         <p>11</p>
       </div>

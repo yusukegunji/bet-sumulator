@@ -24,6 +24,9 @@ export class TanshoFormsComponent implements OnInit, AfterViewInit {
   raceCount: number;
   appearanceRate: number;
   appearanceRates: number[] = [];
+  dividendArrOfArr: number[][] = [[]];
+  totalDividendArr: number[] = [];
+  avgDividend: number;
 
   get betForms(): FormArray {
     return this.betMoneyGroup.get('betForms') as FormArray;
@@ -75,7 +78,7 @@ export class TanshoFormsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.ranks.forEach((rank) => {
+    this.ranks.forEach((rank, i) => {
       this.raceService
         .getWinRaces(rank.index, this.jo.id)
         .pipe(
@@ -86,10 +89,16 @@ export class TanshoFormsComponent implements OnInit, AfterViewInit {
 
             this.appearanceRates.push(this.appearanceRate);
             this.winRaces.push(winNumOfAppears);
+
+            this.totalDividendArr[i] = races.reduce(
+              (sum, i2) => sum + i2.tansho1,
+              0
+            );
+
+            console.log(this.totalDividendArr);
           })
         )
         .subscribe();
-      console.log(this.winRaces);
     });
   }
 }

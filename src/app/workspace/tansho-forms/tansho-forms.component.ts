@@ -28,6 +28,8 @@ export class TanshoFormsComponent implements OnInit, AfterViewInit {
   avgDividendArr: number[] = [];
   expectationArr: number[] = [];
 
+  winningNumArr: number[] = [];
+
   get betForms(): FormArray {
     return this.betMoneyGroup.get('betForms') as FormArray;
   }
@@ -72,6 +74,7 @@ export class TanshoFormsComponent implements OnInit, AfterViewInit {
               return a + b;
             }
           );
+          this.winningNumArr.push();
         }
       }
     });

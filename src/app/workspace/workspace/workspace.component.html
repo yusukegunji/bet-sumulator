@@ -1,27 +1,32 @@
 <app-shikibetu-selectors></app-shikibetu-selectors>
 
-<div class="grid-wrapper">
-  <ng-container *ngFor="let shikibetu of uiService.shikibetuGroup">
-    <ng-container *ngIf="shikibetu === 'tansho'"
-      ><app-tansho-forms [jo]="jo"></app-tansho-forms
-    ></ng-container>
-    <ng-container *ngIf="shikibetu === 'fukusho'"
-      ><app-fukusho-forms></app-fukusho-forms
-    ></ng-container>
-    <ng-container *ngIf="result$ | async as result">
-      <ng-container *ngIf="shikibetu === 'umaren'">
-        <app-umaren-forms [result]="result"></app-umaren-forms>
+<div class="grid-wrapper" *ngIf="races$ | async as races">
+  <ng-container *ngIf="venue$ | async as venue">
+    <ng-container *ngFor="let shikibetu of uiService.shikibetuGroup">
+      <ng-container *ngIf="shikibetu === 'tansho'"
+        ><app-tansho-forms
+          [jo]="jo"
+          [races]="races"
+          [venue]="venue"
+        ></app-tansho-forms
+      ></ng-container>
+      <ng-container *ngIf="shikibetu === 'fukusho'"
+        ><app-fukusho-forms [races]="races"></app-fukusho-forms
+      ></ng-container>
+      <ng-container *ngIf="result$ | async as result">
+        <ng-container *ngIf="shikibetu === 'umaren'">
+          <app-umaren-forms
+            [result]="result"
+            [races]="races"
+          ></app-umaren-forms>
+        </ng-container>
       </ng-container>
-    </ng-container>
-    <ng-container *ngIf="shikibetu === 'umatan'">
-      <app-umatan-forms></app-umatan-forms>
+      <ng-container *ngIf="shikibetu === 'umatan'">
+        <app-umatan-forms [races]="races"></app-umatan-forms>
+      </ng-container>
     </ng-container>
   </ng-container>
 </div>
-
-<ng-container *ngIf="dataset">
-  <hot-table [settings]="settings"> </hot-table>
-</ng-container>
 
 <div class="side-selector" *ngIf="uiService.isTwoHorseOptionNavOpen">
   <app-two-horse-option

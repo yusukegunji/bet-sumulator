@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import deepmerge from 'deepmerge';
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { Jo } from 'src/app/interfaces/jo';
 import { Sheet } from 'src/app/interfaces/sheet';
 import { Yosoka } from 'src/app/interfaces/yosoka';
@@ -39,17 +39,8 @@ export class WorkspaceComponent implements OnInit {
   yosoka: Yosoka;
   jo: Jo;
   settings;
-
-  dataset: any[] = [
-    { id: 1, name: 'Ted Right', address: 'Wall Street' },
-    { id: 2, name: 'Frank Honest', address: 'Pennsylvania Avenue' },
-    { id: 3, name: 'Joan Well', address: 'Broadway' },
-    { id: 4, name: 'Gail Polite', address: 'Bourbon Street' },
-    { id: 5, name: 'Michael Fair', address: 'Lombard Street' },
-    { id: 6, name: 'Mia Fair', address: 'Rodeo Drive' },
-    { id: 7, name: 'Cora Fair', address: 'Sunset Boulevard' },
-    { id: 8, name: 'Jack Right', address: 'Michigan Avenue' },
-  ];
+  races$: Observable<Race[]>;
+  venue$: Observable<Jo>;
 
   constructor(
     public uiService: UiService,
@@ -66,58 +57,8 @@ export class WorkspaceComponent implements OnInit {
       this.jo = this.joList.find((jo) => {
         return jo.id === sheet.joId;
       });
+      this.venue$ = this.raceService.getVenue(this.jo.id).pipe(take(1));
+      this.races$ = this.raceService.getRacesByJoId(this.jo.id).pipe(take(1));
     });
-
-    this.settings = {
-      data: this.dataset,
-      columns: [
-        {
-          data: 'id',
-          type: 'numeric',
-          width: 40,
-        },
-        {
-          data: 'currency',
-          type: 'text',
-        },
-        {
-          data: 'level',
-          type: 'numeric',
-          numericFormat: {
-            pattern: '0.0000',
-          },
-        },
-        {
-          data: 'units',
-          type: 'text',
-        },
-        {
-          data: 'asOf',
-          type: 'date',
-          dateFormat: 'MM/DD/YYYY',
-        },
-        {
-          data: 'onedChng',
-          type: 'numeric',
-          numericFormat: {
-            pattern: '0.00%',
-          },
-        },
-      ],
-      stretchH: 'all',
-      width: 924,
-      autoWrapRow: true,
-      height: 487,
-      maxRows: 22,
-      manualRowResize: true,
-      manualColumnResize: true,
-      rowHeaders: true,
-      colHeaders: ['ID', 'Currency', 'Level', 'Units', 'Date', 'Change'],
-      manualRowMove: true,
-      manualColumnMove: true,
-      contextMenu: true,
-      filters: true,
-      dropdownMenu: true,
-    };
   }
 }

@@ -10,6 +10,7 @@
           <div
             class="ratest__card"
             *ngFor="let sheet of ratestSheetList | slice: 0:6"
+            (click)="navigate(sheet.id)"
           >
             <div class="ratest__avatar">
               <img [src]="sheet.yosoka.avatarURL" alt="" />

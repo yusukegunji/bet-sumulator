@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Race } from 'src/app/interfaces/race';
 import { Rank } from 'src/app/interfaces/rank';
 import { BetService } from 'src/app/services/bet.service';
 import Ranks from '../../rank.json';
@@ -10,6 +11,8 @@ import Ranks from '../../rank.json';
   styleUrls: ['./fukusho-forms.component.scss'],
 })
 export class FukushoFormsComponent implements OnInit {
+  @Input() races: Race[];
+
   ranks: Rank[] = Ranks;
   betMoneyGroup: FormGroup;
 

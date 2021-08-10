@@ -10,6 +10,12 @@ import { Race } from '../interfaces/race';
 export class RaceService {
   constructor(private db: AngularFirestore) {}
 
+  getRacesByJoId(joId: number): Observable<Race[]> {
+    return this.db
+      .collection<Race>('races', (ref) => ref.where('joId', '==', joId))
+      .valueChanges();
+  }
+
   getWinRaces(index: number, joId: number): Observable<Race[]> {
     return this.db
       .collection<Race>('races', (ref) =>

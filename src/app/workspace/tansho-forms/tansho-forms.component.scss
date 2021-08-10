@@ -30,4 +30,12 @@
     place-items: center;
     margin: 0 auto;
   }
+  &__result {
+    display: grid;
+    place-items: center;
+    &.plus {
+      color: red;
+      font-weight: 600;
+    }
+  }
 }

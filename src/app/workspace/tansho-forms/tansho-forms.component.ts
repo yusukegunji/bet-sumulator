@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { Jo } from 'src/app/interfaces/jo';
 import { Race } from 'src/app/interfaces/race';
 import { Rank } from 'src/app/interfaces/rank';
@@ -14,12 +14,15 @@ import Ranks from '../../rank.json';
   templateUrl: './tansho-forms.component.html',
   styleUrls: ['./tansho-forms.component.scss'],
 })
-export class TanshoFormsComponent implements OnInit, AfterViewInit {
+export class TanshoFormsComponent implements OnInit {
+  @Input() races: Race[];
   @Input() jo: Jo;
+  @Input() venue: Jo;
   ranks: Rank[] = Ranks;
   betMoneyGroup: FormGroup;
   winRaces$: Observable<Race[]>;
-  winRaces: number[] = [];
+  winRaces: Race[][] = [[]];
+  winNumOfAppearsArr: number[] = [];
   venue$: Observable<Jo>;
   raceCount: number;
   appearanceRate: number;
@@ -27,7 +30,6 @@ export class TanshoFormsComponent implements OnInit, AfterViewInit {
   totalDividendArr: number[] = [];
   avgDividendArr: number[] = [];
   expectationArr: number[] = [];
-
   winningNumArr: number[] = [];
 
   get betForms(): FormArray {
@@ -55,16 +57,45 @@ export class TanshoFormsComponent implements OnInit, AfterViewInit {
       betForms: this.fb.array([]),
     });
 
-    this.raceService.getVenue(this.jo.id).subscribe((venue) => {
-      this.raceCount = venue.raceCount;
-    });
+    this.raceCount = this.venue.raceCount;
 
-    this.ranks.forEach((rank) => {
+    this.ranks.forEach((rank, i) => {
       this.addBetforms();
+      this.winRaces[i] = this.races.filter((race) => {
+        return race.res1 === rank.index;
+      });
+
+      const winNumOfAppears = this.winRaces[i].length;
+      this.winNumOfAppearsArr.push(winNumOfAppears);
+      this.appearanceRate =
+        Math.floor((winNumOfAppears / this.raceCount) * 100 * 10) / 10;
+
+      this.appearanceRates.push(this.appearanceRate);
+
+      this.totalDividendArr[i] = this.winRaces[i].reduce(
+        (sum, race) => sum + race.tansho1,
+        0
+      );
+
+      this.totalDividendArr.forEach((total) => {
+        if (winNumOfAppears === 0) {
+          return;
+        }
+
+        this.avgDividendArr[i] =
+          (Math.floor(total / winNumOfAppears) * 10) / 10;
+
+        this.expectationArr[i] =
+          Math.floor(
+            this.avgDividendArr[i] * (this.appearanceRates[i] / 100) * 10
+          ) / 10;
+      });
     });
 
     this.betMoneyGroup.valueChanges.subscribe((val) => {
       let sum: number = 0;
+      this.betService.totalDividendArr = [];
+      this.betService.totalAvgDividendArr = [];
       for (let key in val.betForms) {
         if (val.betForms[key].betForm > 0) {
           sum = val.betForms[key].betForm + sum;
@@ -74,42 +105,61 @@ export class TanshoFormsComponent implements OnInit, AfterViewInit {
               return a + b;
             }
           );
-          this.winningNumArr.push();
         }
+        if (val.betForms[key].betForm > 0) {
+          this.winRaces[key].forEach((winRace: Race) => {
+            if (this.betService.winningRacesArr.includes(winRace)) {
+              return;
+            } else {
+              this.betService.winningRacesArr.push(winRace);
+            }
+          });
+        }
+        if (val.betForms[key].betForm === 0) {
+          this.betService.winningRacesArr.splice(
+            Number(key),
+            this.winNumOfAppearsArr[key]
+          );
+          this.betService.totalDividendArr.splice(Number(key), 1);
+        }
+
+        this.betService.winningRate =
+          Math.floor(
+            (this.betService.winningRacesArr.length / this.raceCount) * 1000
+          ) / 10;
+
+        if (val.betForms[key].betForm > 0) {
+          console.log(this.avgDividendArr[key]);
+
+          this.betService.totalAvgDividendArr.push(
+            val.betForms[key].betForm * this.avgDividendArr[key]
+          );
+
+          this.betService.totalDividendArr.push(
+            this.betService.totalAvgDividendArr[key] *
+              this.winNumOfAppearsArr[key]
+          );
+        }
+
+        if (this.betService.totalAvgDividendArr) {
+          console.log(this.betService.totalAvgDividendArr);
+
+          this.betService.totalRecoveryNum =
+            this.betService.totalDividendArr?.reduce((sum, value) => {
+              return sum + value;
+            }, 0);
+          console.log(this.betService.totalRecoveryNum);
+        }
+
+        console.log(this.betService.totalRecoveryNum);
+
+        this.betService.recoveryRate =
+          Math.floor(
+            (this.betService.totalRecoveryNum /
+              (this.raceCount * this.betService.totalBet)) *
+              10
+          ) / 10;
       }
-    });
-  }
-
-  ngAfterViewInit() {
-    this.ranks.forEach((rank, i) => {
-      this.raceService
-        .getWinRaces(rank.index, this.jo.id)
-        .pipe(
-          map((races) => {
-            const winNumOfAppears = races.length;
-            this.appearanceRate =
-              Math.floor((winNumOfAppears / this.raceCount) * 100 * 10) / 10;
-
-            this.appearanceRates.push(this.appearanceRate);
-            this.winRaces.push(winNumOfAppears);
-
-            this.totalDividendArr[i] = races.reduce(
-              (sum, i2) => sum + i2.tansho1,
-              0
-            );
-
-            this.totalDividendArr.forEach((total) => {
-              this.avgDividendArr[i] =
-                (Math.floor(total / winNumOfAppears) * 10) / 10;
-
-              this.expectationArr[i] =
-                Math.floor(
-                  this.avgDividendArr[i] * (this.appearanceRates[i] / 100) * 10
-                ) / 10;
-            });
-          })
-        )
-        .subscribe();
     });
   }
 }

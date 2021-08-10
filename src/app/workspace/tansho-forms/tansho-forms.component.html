@@ -23,15 +23,15 @@
           matInput
           formControlName="betForm"
           type="number"
-          min="100"
+          min="0"
           max="10000"
           step="100"
         />
       </mat-form-field>
 
-      <ng-container *ngIf="winRaces">
+      <ng-container *ngIf="winNumOfAppearsArr">
         <div class="row__result">
-          <p>{{ winRaces[i] }}</p>
+          <p>{{ winNumOfAppearsArr[i] }}</p>
         </div>
       </ng-container>
       <ng-container *ngIf="appearanceRates">
@@ -41,12 +41,12 @@
       </ng-container>
       <ng-container *ngIf="avgDividendArr">
         <div class="row__result">
-          <p>{{ avgDividendArr[i] }}</p>
+          <p>{{ avgDividendArr[i] ? avgDividendArr[i] : 0 }}</p>
         </div>
       </ng-container>
       <ng-container *ngIf="expectationArr">
-        <div class="row__result">
-          <p>{{ expectationArr[i] }}</p>
+        <div class="row__result" [class.plus]="expectationArr[i] > 100">
+          <p>{{ expectationArr[i] ? expectationArr[i] : 0 }}</p>
         </div>
       </ng-container>
     </div>

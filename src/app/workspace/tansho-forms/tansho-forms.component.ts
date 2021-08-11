@@ -121,6 +121,7 @@ export class TanshoFormsComponent implements OnInit {
             this.winNumOfAppearsArr[key]
           );
           this.betService.totalDividendArr.splice(Number(key), 1);
+          this.betService.totalAvgDividendArr[key] = 0;
         }
 
         this.betService.winningRate =
@@ -129,29 +130,26 @@ export class TanshoFormsComponent implements OnInit {
           ) / 10;
 
         if (val.betForms[key].betForm > 0) {
-          console.log(this.avgDividendArr[key]);
-
           this.betService.totalAvgDividendArr.push(
             val.betForms[key].betForm * this.avgDividendArr[key]
           );
 
-          this.betService.totalDividendArr.push(
-            this.betService.totalAvgDividendArr[key] *
-              this.winNumOfAppearsArr[key]
-          );
+          if (!this.betService.totalAvgDividendArr[key]) {
+            this.betService.totalDividendArr.push(null);
+          } else {
+            this.betService.totalDividendArr.push(
+              this.betService.totalAvgDividendArr[key] *
+                this.winNumOfAppearsArr[key]
+            );
+          }
         }
 
         if (this.betService.totalAvgDividendArr) {
-          console.log(this.betService.totalAvgDividendArr);
-
           this.betService.totalRecoveryNum =
             this.betService.totalDividendArr?.reduce((sum, value) => {
               return sum + value;
             }, 0);
-          console.log(this.betService.totalRecoveryNum);
         }
-
-        console.log(this.betService.totalRecoveryNum);
 
         this.betService.recoveryRate =
           Math.floor(

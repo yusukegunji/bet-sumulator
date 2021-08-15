@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Jo } from 'src/app/interfaces/jo';
 import { Race } from 'src/app/interfaces/race';
 import { Rank } from 'src/app/interfaces/rank';
 import { BetService } from 'src/app/services/bet.service';
@@ -12,7 +13,9 @@ import Ranks from '../../rank.json';
   styleUrls: ['./umaren-forms.component.scss'],
 })
 export class UmarenFormsComponent implements OnInit {
+  @Input() jo: Jo;
   @Input() races: Race[];
+  @Input() venue: Jo;
   @Input() result: number[][];
   ranks: Rank[] = Ranks;
   betMoneyGroup: FormGroup;

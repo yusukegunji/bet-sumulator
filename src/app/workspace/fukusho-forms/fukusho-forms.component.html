@@ -5,6 +5,10 @@
 <div class="header">
   <p class="header__item">馬番</p>
   <p class="header__item">金額</p>
+  <p class="header__item">出現回数</p>
+  <p class="header__item">出現率</p>
+  <p class="header__item">平均配当</p>
+  <p class="header__item">期待値</p>
 </div>
 
 <form [formGroup]="betMoneyGroup">
@@ -19,11 +23,32 @@
           matInput
           formControlName="betForm"
           type="number"
-          min="100"
+          min="0"
           max="10000"
           step="100"
         />
       </mat-form-field>
+
+      <ng-container *ngIf="winNumOfAppearsArr">
+        <div class="row__result">
+          <p>{{ winNumOfAppearsArr[i] }}</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="appearanceRates">
+        <div class="row__result">
+          <p>{{ appearanceRates[i] }}%</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="avgDividendArr">
+        <div class="row__result">
+          <p>{{ avgDividendArr[i] ? avgDividendArr[i] : 0 }}</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="expectationArr">
+        <div class="row__result" [class.plus]="expectationArr[i] > 100">
+          <p>{{ expectationArr[i] ? expectationArr[i] : 0 }}</p>
+        </div>
+      </ng-container>
     </div>
   </div>
 </form>

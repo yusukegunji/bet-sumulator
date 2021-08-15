@@ -39,8 +39,9 @@ export class SelectComponent implements OnInit {
     const val = this.shikibetuControls.controls[i].value.shikibetuControl;
     this.uiService.shikibetuGroup[i] = val;
     this.uiService.shikibetu = val;
+    console.log(val);
 
-    if (val === ('umaren' || 'umatan' || 'wide')) {
+    if (val === 'umaren' || val === 'umatan' || val === 'wide') {
       this.uiService.isTwoHorseOptionNavOpen = true;
     } else {
       this.uiService.isTwoHorseOptionNavOpen = false;

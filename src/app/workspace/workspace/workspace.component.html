@@ -11,7 +11,11 @@
         ></app-tansho-forms
       ></ng-container>
       <ng-container *ngIf="shikibetu === 'fukusho'"
-        ><app-fukusho-forms [races]="races"></app-fukusho-forms
+        ><app-fukusho-forms
+          [jo]="jo"
+          [races]="races"
+          [venue]="venue"
+        ></app-fukusho-forms
       ></ng-container>
       <ng-container *ngIf="result$ | async as result">
         <ng-container *ngIf="shikibetu === 'umaren'">
@@ -20,9 +24,14 @@
             [races]="races"
           ></app-umaren-forms>
         </ng-container>
-      </ng-container>
-      <ng-container *ngIf="shikibetu === 'umatan'">
-        <app-umatan-forms [races]="races"></app-umatan-forms>
+
+        <ng-container *ngIf="shikibetu === 'umatan'">
+          <app-umatan-forms
+            [jo]="jo"
+            [races]="races"
+            [venue]="venue"
+          ></app-umatan-forms>
+        </ng-container>
       </ng-container>
     </ng-container>
   </ng-container>

@@ -1,12 +1,10 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
 import { Jo } from 'src/app/interfaces/jo';
 import { Race } from 'src/app/interfaces/race';
 import { Rank } from 'src/app/interfaces/rank';
 import { BetService } from 'src/app/services/bet.service';
-import { RaceService } from 'src/app/services/race.service';
 import Ranks from '../../rank.json';
 
 @Component({
@@ -20,27 +18,20 @@ export class TanshoFormsComponent implements OnInit {
   @Input() venue: Jo;
   ranks: Rank[] = Ranks;
   betMoneyGroup: FormGroup;
-  winRaces$: Observable<Race[]>;
-  winRaces: Race[][] = [[]];
+  private winRaces: Race[][] = [[]];
   winNumOfAppearsArr: number[] = [];
-  venue$: Observable<Jo>;
   raceCount: number;
-  appearanceRate: number;
+  private appearanceRate: number;
   appearanceRates: number[] = [];
-  totalDividendArr: number[] = [];
+  private totalDividendArr: number[] = [];
   avgDividendArr: number[] = [];
   expectationArr: number[] = [];
-  winningNumArr: number[] = [];
 
   get betForms(): FormArray {
     return this.betMoneyGroup.get('betForms') as FormArray;
   }
 
-  constructor(
-    private betService: BetService,
-    private fb: FormBuilder,
-    private raceService: RaceService
-  ) {}
+  constructor(private betService: BetService, private fb: FormBuilder) {}
 
   buildBetForms() {
     return this.fb.group({

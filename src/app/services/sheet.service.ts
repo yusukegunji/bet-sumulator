@@ -45,6 +45,16 @@ export class SheetService {
       .finally(() => this.router.navigateByUrl(`/workspace/${sheetId}`));
   }
 
+  setShikibetu(sheetId: string, shikibetu: string, uid: string) {
+    this.db.doc(`sheets/${sheetId}`).set(
+      {
+        [shikibetu]: true,
+        updatedUid: uid,
+      },
+      { merge: true }
+    );
+  }
+
   getSheet(sheetId: string): Observable<Sheet> {
     return this.db.doc<Sheet>(`sheets/${sheetId}`).valueChanges();
   }

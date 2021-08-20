@@ -10,6 +10,13 @@ export interface Sheet {
   updatedUid: string;
   createdAt: firebase.default.firestore.Timestamp;
   updatedAt: firebase.default.firestore.Timestamp;
+  tansho?: boolean;
+  fukusho?: boolean;
+  wide?: boolean;
+  umaren?: boolean;
+  umatan?: boolean;
+  sanpuku?: boolean;
+  santan?: boolean;
 }
 
 export interface SheetWithYosoka extends Sheet {

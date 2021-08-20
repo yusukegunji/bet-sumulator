@@ -17,6 +17,8 @@ import * as numbro from 'numbro';
 import * as languages from 'numbro/dist/languages.min';
 import { RaceService } from 'src/app/services/race.service';
 import { Race } from 'src/app/interfaces/race';
+import { User } from 'src/app/interfaces/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 numbro.default.registerLanguage(languages['ja-JP']);
 
@@ -33,6 +35,7 @@ export class WorkspaceComponent implements OnInit {
       return this.sheetService.getSheet(sheetId);
     })
   );
+  user$: Observable<User> = this.authService.user$;
   yosokaList: Yosoka[] = YosokaList;
   joList = deepmerge(JraList, NarList);
   sheet: Sheet;
@@ -47,7 +50,8 @@ export class WorkspaceComponent implements OnInit {
     private checkService: CheckService,
     private sheetService: SheetService,
     private route: ActivatedRoute,
-    private raceService: RaceService
+    private raceService: RaceService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {

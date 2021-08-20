@@ -1,48 +1,53 @@
-<app-shikibetu-selectors></app-shikibetu-selectors>
+<ng-container *ngIf="sheet">
+  <ng-container *ngIf="user$ | async as user">
+    <app-shikibetu-selectors
+      [sheet]="sheet"
+      [user]="user"
+    ></app-shikibetu-selectors>
 
-<div class="grid-wrapper" *ngIf="races$ | async as races">
-  <ng-container *ngIf="venue$ | async as venue">
-    <ng-container *ngFor="let shikibetu of uiService.shikibetuGroup">
-      <ng-container *ngIf="shikibetu === 'tansho'"
-        ><app-tansho-forms
-          [jo]="jo"
-          [races]="races"
-          [venue]="venue"
-        ></app-tansho-forms
-      ></ng-container>
-      <ng-container *ngIf="shikibetu === 'fukusho'"
-        ><app-fukusho-forms
-          [jo]="jo"
-          [races]="races"
-          [venue]="venue"
-        ></app-fukusho-forms
-      ></ng-container>
-      <ng-container *ngIf="result$ | async as result">
-        <ng-container *ngIf="shikibetu === 'umaren'">
-          <app-umaren-forms
-            [result]="result"
-            [races]="races"
-          ></app-umaren-forms>
-        </ng-container>
-
-        <ng-container *ngIf="shikibetu === 'umatan'">
-          <app-umatan-forms
+    <div class="grid-wrapper" *ngIf="races$ | async as races">
+      <ng-container *ngIf="venue$ | async as venue">
+        <ng-container *ngIf="sheet.tansho"
+          ><app-tansho-forms
             [jo]="jo"
             [races]="races"
             [venue]="venue"
-          ></app-umatan-forms>
+          ></app-tansho-forms
+        ></ng-container>
+        <ng-container *ngIf="sheet.fukusho"
+          ><app-fukusho-forms
+            [jo]="jo"
+            [races]="races"
+            [venue]="venue"
+          ></app-fukusho-forms
+        ></ng-container>
+        <ng-container *ngIf="result$ | async as result">
+          <ng-container *ngIf="sheet.umaren">
+            <app-umaren-forms
+              [result]="result"
+              [races]="races"
+            ></app-umaren-forms>
+          </ng-container>
+
+          <ng-container *ngIf="sheet.umatan">
+            <app-umatan-forms
+              [jo]="jo"
+              [races]="races"
+              [venue]="venue"
+            ></app-umatan-forms>
+          </ng-container>
         </ng-container>
       </ng-container>
-    </ng-container>
+    </div>
+
+    <div class="side-selector" *ngIf="uiService.isTwoHorseOptionNavOpen">
+      <app-two-horse-option
+        [shikibetu]="uiService.shikibetu"
+      ></app-two-horse-option>
+    </div>
+
+    <div class="footer">
+      <app-result [sheet]="sheet" [yosoka]="yosoka" [jo]="jo"></app-result>
+    </div>
   </ng-container>
-</div>
-
-<div class="side-selector" *ngIf="uiService.isTwoHorseOptionNavOpen">
-  <app-two-horse-option
-    [shikibetu]="uiService.shikibetu"
-  ></app-two-horse-option>
-</div>
-
-<div class="footer">
-  <app-result [sheet]="sheet" [yosoka]="yosoka" [jo]="jo"></app-result>
-</div>
+</ng-container>
